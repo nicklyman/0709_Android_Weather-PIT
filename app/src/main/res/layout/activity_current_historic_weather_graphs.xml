@@ -11,4 +11,43 @@
         android:id="@+id/imageView"
         android:background="@drawable/background"
         android:scaleType="centerCrop" />
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/imageViewLineGraph"
+        android:background="@drawable/line_graph_placeholder"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="The current hourly temperature forecast for today is shown in in red: Partly cloudy throughout the day, with a high temperature of 81° around 5 PM, and a low of 53° around 6 AM. The sun rose at 5:27 AM and will set at 9:04 PM."
+        android:textColor="@color/colorPrimaryText"
+        android:textAlignment="center"
+        android:background="@drawable/border_style"
+        android:id="@+id/currentWeatherTextView"
+        android:layout_marginBottom="30dp"
+        android:layout_above="@+id/imageViewLineGraph"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="The historic hourly temperature for this date in year 1979 is shown in blue: Light rain in the morning and afternoon, with a high temperature of 65° around 5 PM, and a low of 54° around 5 AM. The sun rose at 5:27 AM and set at 9:04 PM."
+        android:textColor="@color/colorPrimaryText"
+        android:textAlignment="center"
+        android:background="@drawable/border_style"
+        android:id="@+id/historicWeatherTextView"
+        android:layout_below="@+id/imageViewLineGraph"
+        android:layout_alignLeft="@+id/imageView"
+        android:layout_alignStart="@+id/imageView"
+        android:layout_marginTop="30dp" />
+
 </RelativeLayout>

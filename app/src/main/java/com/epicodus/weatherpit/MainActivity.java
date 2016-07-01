@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 String cityState = mUserInputEditText.getText().toString();
                 Log.d(TAG, cityState);
                 Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
+                intent.putExtra("cityState", cityState);
                 startActivity(intent);
             }
         });
