@@ -11,47 +11,48 @@
         android:layout_height="match_parent"
         android:id="@+id/imageView"
         android:background="@drawable/background"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Weather PIT"
         android:id="@+id/titleTextView"
-        android:layout_marginTop="50dp"
-        android:textSize="30sp"
-        android:textColor="#000000"
+        android:layout_marginTop="40dp"
+        android:textSize="40sp"
+        android:textColor="@color/colorMatchImage"
         android:textStyle="bold"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <EditText
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cityStateEditText"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="140dp"
-        android:layout_alignLeft="@+id/titleTextView"
-        android:layout_alignStart="@+id/titleTextView"
-        android:layout_alignRight="@+id/titleTextView"
-        android:layout_alignEnd="@+id/titleTextView"
+        android:layout_marginBottom="26dp"
         android:textAlignment="center"
         android:textIsSelectable="false"
         android:textColorHint="#ee7c09"
+        android:textColor="@color/colorUserInputText"
         android:hint="City, State"
         android:textStyle="bold"
-        android:textSize="18sp" />
+        android:textSize="32sp"
+        android:layout_above="@+id/getWeatherButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Get Weather"
+        android:textColor="@color/colorTextIcons"
         android:id="@+id/getWeatherButton"
-        android:layout_marginTop="42dp"
-        android:layout_alignTop="@+id/cityStateEditText"
-        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:layout_marginBottom="41dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
