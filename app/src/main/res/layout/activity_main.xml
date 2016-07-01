@@ -28,7 +28,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/cityStateEditText"
+        android:id="@+id/userInputEditText"
         android:layout_marginBottom="26dp"
         android:textAlignment="center"
         android:textIsSelectable="false"
