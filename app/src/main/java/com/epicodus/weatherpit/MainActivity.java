@@ -1,5 +1,6 @@
 package com.epicodus.weatherpit;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
             mGetWeatherButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Toast.makeText(MainActivity.this, "Whoa, the weather was different then!", Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
+                    startActivity(intent);
                 }
             });
     }
