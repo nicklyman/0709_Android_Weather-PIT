@@ -50,4 +50,17 @@
         android:layout_alignStart="@+id/imageView"
         android:layout_marginTop="30dp" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationTextView"
+        android:textColor="@color/colorUserInputText"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_above="@+id/currentWeatherTextView" />
+
 </RelativeLayout>
