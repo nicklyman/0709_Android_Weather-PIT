@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class CurrentHistoricWeatherGraphs extends AppCompatActivity {
+public class CurrentHistoricWeatherGraphs extends AppCompatActivity implements View.OnClickListener {
     private TextView mForecastLinkTextView;
     private TextView mLocationTextView;
     private Button mSevenDayForecastButton;
@@ -26,12 +26,14 @@ public class CurrentHistoricWeatherGraphs extends AppCompatActivity {
         Intent intent = getIntent();
         String cityState = intent.getStringExtra("cityState");
         mLocationTextView.setText(cityState);
-        mSevenDayForecastButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CurrentHistoricWeatherGraphs.this, SevenDayForecastActivity.class);
-                startActivity(intent);
-            }
-        });
+        mSevenDayForecastButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == mSevenDayForecastButton) {
+            Intent intent = new Intent(CurrentHistoricWeatherGraphs.this, SevenDayForecastActivity.class);
+            startActivity(intent);
+        }
     }
 }

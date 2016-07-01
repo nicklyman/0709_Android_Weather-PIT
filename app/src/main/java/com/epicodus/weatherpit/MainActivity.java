@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mGetWeatherButton;
     private EditText mUserInputEditText;
     private TextView mTitleTextView;
@@ -26,14 +26,16 @@ public class MainActivity extends AppCompatActivity {
         mTitleTextView.setTypeface(oswaldFont);
         mUserInputEditText = (EditText) findViewById(R.id.userInputEditText);
         mGetWeatherButton = (Button) findViewById(R.id.getWeatherButton);
-        mGetWeatherButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String cityState = mUserInputEditText.getText().toString();
-                Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
-                intent.putExtra("cityState", cityState);
-                startActivity(intent);
-            }
-        });
+        mGetWeatherButton.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view == mGetWeatherButton) {
+            String cityState = mUserInputEditText.getText().toString();
+            Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
+            intent.putExtra("cityState", cityState);
+            startActivity(intent);
+        }
     }
 }
