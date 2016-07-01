@@ -10,7 +10,9 @@
         android:layout_height="match_parent"
         android:id="@+id/imageView"
         android:background="@drawable/background"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true" />
 
 
     <ImageView
@@ -26,12 +28,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        android:text="The current hourly temperature forecast for today is shown in in red: Partly cloudy throughout the day, with a high temperature of 81° around 5 PM, and a low of 53° around 6 AM. The sun rose at 5:27 AM and will set at 9:04 PM."
+        android:text="The current hourly temperatures forecast for today is shown in in red: Partly cloudy throughout the day, with a high temperature of 81° around 5 PM, and a low of 53° around 6 AM. The sun rose at 5:27 AM and will set at 9:04 PM."
         android:textColor="@color/colorPrimaryText"
         android:textAlignment="center"
         android:background="@drawable/border_style"
         android:id="@+id/currentWeatherTextView"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:layout_above="@+id/imageViewLineGraph"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView" />
@@ -40,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        android:text="The historic hourly temperature for this date in year 1979 is shown in blue: Light rain in the morning and afternoon, with a high temperature of 65° around 5 PM, and a low of 54° around 5 AM. The sun rose at 5:27 AM and set at 9:04 PM."
+        android:text="The historic hourly temperatures for this date in year 1979 is shown in blue: Light rain in the morning and afternoon, with a high temperature of 65° around 5 PM, and a low of 54° around 5 AM. The sun rose at 5:27 AM and set at 9:04 PM."
         android:textColor="@color/colorPrimaryText"
         android:textAlignment="center"
         android:background="@drawable/border_style"
@@ -48,19 +50,27 @@
         android:layout_below="@+id/imageViewLineGraph"
         android:layout_alignLeft="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="10dp" />
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/locationTextView"
         android:textColor="@color/colorUserInputText"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/imageView"
-        android:layout_alignEnd="@+id/imageView"
-        android:layout_above="@+id/currentWeatherTextView" />
+        android:layout_above="@+id/currentWeatherTextView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:text="View the 7 Day Forecast"
+        android:layout_marginBottom="15dp"
+        android:id="@+id/sevenDayForecastButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
