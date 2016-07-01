@@ -8,16 +8,33 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:theme="@style/NoActionBarTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CurrentHistoricWeatherGraphs" />
-        <activity android:name=".SevenDayForecastActivity" />
-        <activity android:name=".AboutAppActivity"></activity>
+        <activity android:name=".CurrentHistoricWeatherGraphs">
+            <metadata
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.weatherpit.MainActivity">
+            </metadata>
+        </activity>
+        <activity android:name=".SevenDayForecastActivity">
+            <metadata
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.weatherpit.CurrentHistoricWeatherGraphs">
+            </metadata>
+        </activity>
+        <activity android:name=".AboutAppActivity">
+            <metadata
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.epicodus.weatherpit.MainActivity">
+            </metadata>
+        </activity>
     </application>
 
 </manifest>
