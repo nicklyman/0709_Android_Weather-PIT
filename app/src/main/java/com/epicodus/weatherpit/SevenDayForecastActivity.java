@@ -10,7 +10,7 @@ import android.widget.TextView;
 public class SevenDayForecastActivity extends AppCompatActivity {
     private TextView mForecastLinkTextView;
     private ListView mForecastListView;
-    private String[] forecast = new String[] {"Monday - ICON, 56° - 78°", "Tuesday - ICON, 52° - 76°", "Wednesday - ICON, 48° - 75°", "Thursday - ICON, 58° - 82°", "Friday - ICON, 64° - 88°", "Saturday - ICON, 62° - 84°", "Sunday - ICON, 60° - 78°"};
+    private String[] forecast = new String[] {"Monday - ICON, 56°F - 78°F", "Tuesday - ICON, 52°F - 76°F", "Wednesday - ICON, 48°F - 75°F", "Thursday - ICON, 58°F - 82°F", "Friday - ICON, 64°F - 88°F", "Saturday - ICON, 62°F - 84°F", "Sunday - ICON, 60°F - 78°F"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

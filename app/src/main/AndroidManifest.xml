@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CurrentHistoricWeatherGraphs" />
-        <activity android:name=".SevenDayForecastActivity"></activity>
+        <activity android:name=".SevenDayForecastActivity" />
+        <activity android:name=".AboutAppActivity"></activity>
     </application>
 
 </manifest>
