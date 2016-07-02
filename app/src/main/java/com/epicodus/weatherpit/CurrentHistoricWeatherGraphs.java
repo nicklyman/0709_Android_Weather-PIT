@@ -10,18 +10,20 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class CurrentHistoricWeatherGraphs extends AppCompatActivity implements View.OnClickListener {
-    private TextView mForecastLinkTextView;
-    private TextView mLocationTextView;
-    private Button mSevenDayForecastButton;
+    @Bind(R.id.forecastLinkTextView) TextView mForecastLinkTextView;
+    @Bind(R.id.locationTextView) TextView mLocationTextView;
+    @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_current_historic_weather_graphs);
-        mForecastLinkTextView = (TextView) findViewById(R.id.forecastLinkTextView);
-        mLocationTextView = (TextView) findViewById(R.id.locationTextView);
-        mSevenDayForecastButton = (Button) findViewById(R.id.sevenDayForecastButton);
+        ButterKnife.bind(this);
         mForecastLinkTextView.setText(Html.fromHtml("Powered by Forecast<a href=\"http://forecast.io/\"></a>"));
         Intent intent = getIntent();
         String cityState = intent.getStringExtra("cityState");

@@ -12,22 +12,23 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button mGetWeatherButton;
-    private Button mAboutAppButton;
-    private EditText mUserInputEditText;
-    private TextView mTitleTextView;
+    @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
+    @Bind(R.id.aboutAppButton) Button mAboutAppButton;
+    @Bind(R.id.userInputEditText) EditText mUserInputEditText;
+    @Bind(R.id.titleTextView) TextView mTitleTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mTitleTextView = (TextView) findViewById(R.id.titleTextView);
+        ButterKnife.bind(this);
         Typeface oswaldFont = Typeface.createFromAsset(getAssets(), "fonts/Oswald-Bold.ttf");
         mTitleTextView.setTypeface(oswaldFont);
-        mUserInputEditText = (EditText) findViewById(R.id.userInputEditText);
-        mGetWeatherButton = (Button) findViewById(R.id.getWeatherButton);
-        mAboutAppButton = (Button) findViewById(R.id.aboutAppButton);
         mGetWeatherButton.setOnClickListener(this);
         mAboutAppButton.setOnClickListener(this);
     }

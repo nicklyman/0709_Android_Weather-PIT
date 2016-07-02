@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Weather P.I.T (point in time) is designed to give you access to the current weather, but also present you with interesting comparisons to the past. Using the Dark Sky API, I used a random number generator to determine which year to append to the date, so each time the app is refreshed, there is a good chance that the comparison you see will be different. I have also included a seven day forecast with similar functionality if you select a date from that list. I hope you enjoy seeing how today's temperature compares to that date in history with random variability!"
+        android:text="Weather P.I.T (Point In Time) is designed to give you access to the current weather, but also present you with interesting comparisons to the past. Using the Dark Sky API, I used a random number generator to determine which year to append to the date, so each time the app is refreshed, there is a good chance that the comparison you see will be different. I have also included a seven day forecast with similar functionality if you select a date from that list. I hope you enjoy seeing how today's temperature compares to that date in history with random variability!"
         android:background="@drawable/border_style"
         android:padding="10dp"
         android:id="@+id/aboutAppTextView"
