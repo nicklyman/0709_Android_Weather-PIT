@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button mGetWeatherButton;
+    private Button mAboutAppButton;
     private EditText mUserInputEditText;
     private TextView mTitleTextView;
 
@@ -26,7 +27,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mTitleTextView.setTypeface(oswaldFont);
         mUserInputEditText = (EditText) findViewById(R.id.userInputEditText);
         mGetWeatherButton = (Button) findViewById(R.id.getWeatherButton);
+        mAboutAppButton = (Button) findViewById(R.id.aboutAppButton);
         mGetWeatherButton.setOnClickListener(this);
+        mAboutAppButton.setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             String cityState = mUserInputEditText.getText().toString();
             Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
             intent.putExtra("cityState", cityState);
+            startActivity(intent);
+        }
+        if(view == mAboutAppButton) {
+            Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);
             startActivity(intent);
         }
     }
