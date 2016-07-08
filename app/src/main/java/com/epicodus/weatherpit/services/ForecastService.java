@@ -10,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -17,6 +18,7 @@ import okhttp3.Callback;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.Response;
 
 public class ForecastService {
     public static void findForecast(String userInputEditText, Callback callback) {
@@ -41,23 +43,29 @@ public class ForecastService {
         call.enqueue(callback);
     }
 
-    public ArrayList<Forecast> processResults(String jsonData) {
+    public ArrayList<Forecast> processResults(Response response) {
         ArrayList<Forecast> forecasts = new ArrayList<>();
 
         try {
-            JSONObject forecastServiceJSON = new JSONObject(jsonData);
-            JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
-            for (int i = 0; i < dailySummaryJSON.length(); i++) {
-                JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
-                String summary = summaryForecastJSON.getString("summary");
-                String icon = summaryForecastJSON.getString("icon");
-                Double minTemp = summaryForecastJSON.getDouble("temperatureMin");
-                Double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
+            String jsonData = response.body().string();
+            if (response.isSuccessful()) {
+                JSONObject forecastServiceJSON = new JSONObject(jsonData);
+                JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
+                for (int i = 0; i < dailySummaryJSON.length(); i++) {
+                    JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
+                    Integer time = summaryForecastJSON.getInt("time");
+                    String summary = summaryForecastJSON.getString("summary");
+                    String icon = summaryForecastJSON.getString("icon");
+                    Double minTemp = summaryForecastJSON.getDouble("temperatureMin");
+                    Double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-                Forecast forecast = new Forecast(summary, icon, minTemp, maxTemp);
-                forecasts.add(forecast);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp);
+                    forecasts.add(forecast);
+                }
             }
-        } catch(JSONException e) {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return forecasts;

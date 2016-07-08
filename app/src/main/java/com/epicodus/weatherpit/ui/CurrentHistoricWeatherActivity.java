@@ -20,7 +20,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.epicodus.weatherpit.SevenDayForecastActivity">
 
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -14,27 +15,11 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/forecastListView"
-        android:background="@drawable/border_style"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="60dp"
-        android:layout_alignParentBottom="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorUserInputText"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:id="@+id/locationTextView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
 
     <TextView
         android:layout_width="wrap_content"
