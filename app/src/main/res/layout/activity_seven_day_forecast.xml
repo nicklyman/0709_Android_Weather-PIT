@@ -28,11 +28,10 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="7 Day Forecast"
         android:textColor="@color/colorUserInputText"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:id="@+id/sevenDayForecastTextView"
+        android:id="@+id/locationTextView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
