@@ -1,4 +1,4 @@
-package com.epicodus.weatherpit;
+package com.epicodus.weatherpit.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.text.Html;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.epicodus.weatherpit.R;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

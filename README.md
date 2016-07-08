@@ -1,6 +1,6 @@
 # **Weather P.I.T.**
 
-#### An Android mobile application that uses the Dark Sky API to return weather data to the user. July 1, 2016
+#### An Android mobile application that uses the Dark Sky API to return weather data to the user. July 9, 2016
 
 #### By **Nick Lyman**
 
