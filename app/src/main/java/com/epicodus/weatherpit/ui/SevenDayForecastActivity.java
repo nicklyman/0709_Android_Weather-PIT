@@ -30,15 +30,13 @@ public class SevenDayForecastActivity extends AppCompatActivity {
 
     public ArrayList<Forecast> mForecasts = new ArrayList<>();
 
-    private String[] forecasts = new String[] {"Monday - ICON, 56°F - 78°F", "Tuesday - ICON, 52°F - 76°F", "Wednesday - ICON, 48°F - 75°F", "Thursday - ICON, 58°F - 82°F", "Friday - ICON, 64°F - 88°F", "Saturday - ICON, 62°F - 84°F", "Sunday - ICON, 60°F - 78°F"};
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seven_day_forecast);
         ButterKnife.bind(this);
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, forecasts);
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mForecasts);
         mForecastListView.setAdapter(adapter);
 
         mForecastLinkTextView.setText(Html.fromHtml("Powered by Forecast<a href=\"http://forecast.io/\"></a>"));

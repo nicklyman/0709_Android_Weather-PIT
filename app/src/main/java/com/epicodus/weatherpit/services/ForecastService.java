@@ -46,12 +46,15 @@ public class ForecastService {
 
         try {
             JSONObject forecastServiceJSON = new JSONObject(jsonData);
-            JSONArray daySummaryJSON = forecastServiceJSON.getJSONArray("hourly");
-            for (int i = 0; i < daySummaryJSON.length(); i++) {
-                JSONObject summaryForecastJSON = daySummaryJSON.getJSONObject(i);
-                String hourlySummary = summaryForecastJSON.getString("summary");
+            JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
+            for (int i = 0; i < dailySummaryJSON.length(); i++) {
+                JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
+                String summary = summaryForecastJSON.getString("summary");
+                String icon = summaryForecastJSON.getString("icon");
+                Double minTemp = summaryForecastJSON.getDouble("temperatureMin");
+                Double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-                Forecast forecast = new Forecast(hourlySummary);
+                Forecast forecast = new Forecast(summary, icon, minTemp, maxTemp);
                 forecasts.add(forecast);
             }
         } catch(JSONException e) {
