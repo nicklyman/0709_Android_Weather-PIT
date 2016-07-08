@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-import org.w3c.dom.Text;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view == mGetWeatherButton) {
             String cityState = mUserInputEditText.getText().toString();
-            Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherGraphs.class);
+            Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
             intent.putExtra("cityState", cityState);
             startActivity(intent);
         }

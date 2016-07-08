@@ -8,12 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class CurrentHistoricWeatherGraphs extends AppCompatActivity implements View.OnClickListener {
+public class CurrentHistoricWeatherActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.forecastLinkTextView) TextView mForecastLinkTextView;
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;
@@ -34,7 +32,7 @@ public class CurrentHistoricWeatherGraphs extends AppCompatActivity implements V
     @Override
     public void onClick(View view) {
         if(view == mSevenDayForecastButton) {
-            Intent intent = new Intent(CurrentHistoricWeatherGraphs.this, SevenDayForecastActivity.class);
+            Intent intent = new Intent(CurrentHistoricWeatherActivity.this, SevenDayForecastActivity.class);
             startActivity(intent);
         }
     }
