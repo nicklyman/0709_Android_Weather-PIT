@@ -2,18 +2,13 @@ package com.epicodus.weatherpit.models;
 
 
 public class Forecast {
-    private String mHourly;
-    private String mDaily;
+    private String mDaySummary;
 
-public Forecast(String hourly, String daily) {
-    this.mDaily = daily;
-    this.mHourly = hourly;
+public Forecast(String daySummary) {
+    this.mDaySummary = daySummary;
     }
 
-    public String getHourlyTemps() {
-        return mHourly;
-    }
-    public String getDailyTemps() {
-        return mDaily;
+    public String getHourlySummary() {
+        return mDaySummary;
     }
 }

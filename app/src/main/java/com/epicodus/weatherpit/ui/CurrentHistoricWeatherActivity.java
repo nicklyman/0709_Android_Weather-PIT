@@ -12,6 +12,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.epicodus.weatherpit.R;
+import com.epicodus.weatherpit.models.Forecast;
 import com.epicodus.weatherpit.services.ForecastService;
 
 import java.io.IOError;
@@ -70,14 +71,14 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                             public void run() {
                                 String[] hourlyTemps = new String[mForecast.size()];
                                 for (int i = 0; i < hourlyTemps.length; i++) {
-                                    hourlyTemps[i] = mForecast.get(i).getHourlyTemps();
+                                    hourlyTemps[i] = mForecast.get(i).getHourlySummary();
                                 }
                                 ArrayAdapter adapter = new ArrayAdapter(CurrentHistoricWeatherActivity.this,
                                         android.R.layout.simple_list_item_1, hourlyTemps);
                                 mListView.setAdapter(adapter);
 
                                 for (Forecast forecast : mForecast) {
-                                    Log.d(TAG, "Hourly temp: " + forecast.getHourlyTemps());
+                                    Log.d(TAG, "Hourly temp: " + forecast.getHourlySummary());
                                 }
                             }
                         });

@@ -4,6 +4,7 @@ package com.epicodus.weatherpit.services;
 import android.util.Log;
 
 import com.epicodus.weatherpit.Constants;
+import com.epicodus.weatherpit.models.Forecast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,12 +46,12 @@ public class ForecastService {
 
         try {
             JSONObject forecastServiceJSON = new JSONObject(jsonData);
-            JSONArray resultsJSON = forecastServiceJSON.getJSONArray("results");
-            for (int i = 0; i < resultsJSON.length(); i++) {
-                JSONObject dailyForecastJSON = resultsJSON.getJSONObject(i);
-                String hourlyTemperature = dailyForecastJSON("hourly");
+            JSONArray daySummaryJSON = forecastServiceJSON.getJSONArray("hourly");
+            for (int i = 0; i < daySummaryJSON.length(); i++) {
+                JSONObject summaryForecastJSON = daySummaryJSON.getJSONObject(i);
+                String hourlySummary = summaryForecastJSON.getString("summary");
 
-                Forecast forecast = new Forecast(hourlyTemperature);
+                Forecast forecast = new Forecast(hourlySummary);
                 forecasts.add(forecast);
             }
         } catch(JSONException e) {
