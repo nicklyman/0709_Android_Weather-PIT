@@ -51,7 +51,7 @@ public class DailyForecastDetailFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_daily_forecast_detail, container, false);
         ButterKnife.bind(this, view);
 
-        mDayOfWeek.setText(mForecast.getDailyTime());
+//        mDayOfWeek.setText(mForecast.getDailyTime());
         mDailySummary.setText(mForecast.getDailySummary());
         mIcon.setText(mForecast.getDailyIcon());
         Picasso.with(view.getContext()).load(R.drawable.icon_placeholder).into(mWeatherIconPlaceholder);

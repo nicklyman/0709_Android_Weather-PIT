@@ -1,6 +1,7 @@
 package com.epicodus.weatherpit.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,9 @@ import android.widget.TextView;
 
 import com.epicodus.weatherpit.R;
 import com.epicodus.weatherpit.models.Forecast;
+import com.epicodus.weatherpit.ui.DailyForecastDetailActivity;
+
+import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
@@ -42,8 +46,8 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
         return mForecasts.size();
     }
 
-    public class ForecastViewHolder extends RecyclerView.ViewHolder {
-        @Bind(R.id.dailyTimeTextView) TextView mDailyTimeTextView;
+    public class ForecastViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+//        @Bind(R.id.dailyTimeTextView) TextView mDailyTimeTextView;
         @Bind(R.id.dailySummaryTextView) TextView mDailySummaryTextView;
 
         private Context mContext;
@@ -52,6 +56,16 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
             super(itemView);
             ButterKnife.bind(this, itemView);
             mContext = itemView.getContext();
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, DailyForecastDetailActivity.class);
+            intent.putExtra("position", itemPosition + "");
+            intent.putExtra("forecasts", Parcels.wrap(mForecasts));
+            mContext.startActivity(intent);
         }
 
         public void bindForecast(Forecast forecast) {
