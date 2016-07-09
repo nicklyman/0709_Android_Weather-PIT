@@ -16,7 +16,7 @@ public Forecast(int time, String summary, String icon, double minTemp, double ma
     this.mMaxTemp = maxTemp;
     }
 
-    public double getDailyTime() {
+    public int getDailyTime() {
 
         return mTime;
     }

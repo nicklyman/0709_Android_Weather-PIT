@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.epicodus.weatherpit">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +21,7 @@
         </activity>
         <activity
             android:name=".ui.CurrentHistoricWeatherActivity"
-            android:parentActivityName="com.epicodus.weatherpit.ui.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <metadata
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity">
@@ -28,7 +29,7 @@
         </activity>
         <activity
             android:name=".ui.SevenDayForecastActivity"
-            android:parentActivityName="com.epicodus.weatherpit.ui.CurrentHistoricWeatherActivity">>
+            android:parentActivityName=".ui.CurrentHistoricWeatherActivity">
             <metadata
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.CurrentHistoricWeatherActivity">
@@ -36,10 +37,18 @@
         </activity>
         <activity
             android:name=".ui.AboutAppActivity"
-            android:parentActivityName="com.epicodus.weatherpit.ui.MainActivity">
+            android:parentActivityName=".ui.MainActivity">
             <metadata
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".ui.MainActivity">
+            </metadata>
+        </activity>
+        <activity
+            android:name=".ui.DailyForecastDetailActivity"
+            android:parentActivityName=".ui.SevenDayForecastActivity">
+            <metadata
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.SevenDayForecastActivity">
             </metadata>
         </activity>
     </application>

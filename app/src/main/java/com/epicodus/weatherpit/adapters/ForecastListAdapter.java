@@ -55,6 +55,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
         }
 
         public void bindForecast(Forecast forecast) {
+//            mDailyTimeTextView.setText(forecast.getDailyTime());
             mDailySummaryTextView.setText(forecast.getDailySummary());
         }
     }
