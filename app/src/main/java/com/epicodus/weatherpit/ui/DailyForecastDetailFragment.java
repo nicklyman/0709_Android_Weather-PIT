@@ -6,25 +6,59 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.epicodus.weatherpit.R;
+import com.epicodus.weatherpit.models.Forecast;
+import com.squareup.picasso.Picasso;
 
-/**
- * A simple {@link Fragment} subclass.
- */
+import org.parceler.Parcels;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+
 public class DailyForecastDetailFragment extends Fragment {
+    @Bind(R.id.dayOfWeekTextView) TextView mDayOfWeek;
+    @Bind(R.id.dailySummaryTextView) TextView mDailySummary;
+    @Bind(R.id.iconTextView) TextView mIcon;
+    @Bind(R.id.weatherImageView) ImageView mWeatherIconPlaceholder;
+    @Bind(R.id.highTemperatureTextView) TextView mHighTemperature;
+    @Bind(R.id.lowTemperatureTextView) TextView mLowTemperature;
+
+    private Forecast mForecast;
 
 
-    public DailyForecastDetailFragment() {
-        // Required empty public constructor
+    public static DailyForecastDetailFragment newInstance(Forecast forecast) {
+        DailyForecastDetailFragment dailyForecastDetailFragment = new DailyForecastDetailFragment();
+        Bundle args = new Bundle();
+        args.putParcelable("forecast", Parcels.wrap(forecast));
+        dailyForecastDetailFragment.setArguments(args);
+        return dailyForecastDetailFragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mForecast = Parcels.unwrap(getArguments().getParcelable("forecast"));
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_daily_forecast_detail, container, false);
+        View view = inflater.inflate(R.layout.fragment_daily_forecast_detail, container, false);
+        ButterKnife.bind(this, view);
+
+        mDayOfWeek.setText(mForecast.getDailyTime());
+        mDailySummary.setText(mForecast.getDailySummary());
+        mIcon.setText(mForecast.getDailyIcon());
+        Picasso.with(view.getContext()).load(R.drawable.icon_placeholder).into(mWeatherIconPlaceholder);
+        mHighTemperature.setText(Double.toString(mForecast.getDailyMaxTemp()) + "° F");
+        mLowTemperature.setText(Double.toString(mForecast.getDailyMinTemp()) + "° F");
+
+        return view;
     }
 
 }

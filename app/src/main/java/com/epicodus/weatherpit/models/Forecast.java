@@ -1,12 +1,17 @@
 package com.epicodus.weatherpit.models;
 
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Forecast {
     private int mTime;
     private String mSummary;
     private String mIcon;
     private double mMinTemp;
     private double mMaxTemp;
+
+    public Forecast() {}
 
 public Forecast(int time, String summary, String icon, double minTemp, double maxTemp) {
     this.mTime = time;

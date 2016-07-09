@@ -58,12 +58,26 @@
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Icon: "
+                    android:id="@+id/iconTextView"
+                    android:drawablePadding="4dp"
+                    android:textColor="@color/colorTextIcons"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"/>
+
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:id="@+id/restaurantImageView"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp"
+                    android:id="@+id/weatherImageView"
                     android:src="@drawable/icon_placeholder"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="center_horizontal" />
 
                 <TextView
                     android:layout_width="wrap_content"
