@@ -56,7 +56,8 @@
                 android:layout_alignParentStart="true"
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
-                android:paddingRight="30dp">
+                android:paddingRight="30dp"
+                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -72,8 +73,8 @@
                     android:gravity="center"/>
 
                 <ImageView
-                    android:layout_width="250dp"
-                    android:layout_height="250dp"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
                     android:id="@+id/weatherImageView"
                     android:src="@drawable/icon_placeholder"
                     android:scaleType="centerCrop"
@@ -103,6 +104,20 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:gravity="center_vertical"/>
+
+                <TextView
+                    android:layout_width="268dp"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorUserInputText"
+                    android:text="http://forecast.io/"
+                    android:id="@+id/forecastLinkTextView"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="0.33" />
 
             </LinearLayout>
         </RelativeLayout>

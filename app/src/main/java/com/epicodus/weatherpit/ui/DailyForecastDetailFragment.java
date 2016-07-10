@@ -1,6 +1,8 @@
 package com.epicodus.weatherpit.ui;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,13 +21,14 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class DailyForecastDetailFragment extends Fragment {
+public class DailyForecastDetailFragment extends Fragment implements View.OnClickListener {
     @Bind(R.id.dayOfWeekTextView) TextView mDayOfWeek;
     @Bind(R.id.dailySummaryTextView) TextView mDailySummary;
     @Bind(R.id.iconTextView) TextView mIcon;
     @Bind(R.id.weatherImageView) ImageView mWeatherIconPlaceholder;
     @Bind(R.id.highTemperatureTextView) TextView mHighTemperature;
     @Bind(R.id.lowTemperatureTextView) TextView mLowTemperature;
+    @Bind(R.id.forecastLinkTextView) TextView mAPILink;
 
     private Forecast mForecast;
 
@@ -58,7 +61,18 @@ public class DailyForecastDetailFragment extends Fragment {
         mHighTemperature.setText(Double.toString(mForecast.getDailyMaxTemp()) + "° F");
         mLowTemperature.setText(Double.toString(mForecast.getDailyMinTemp()) + "° F");
 
+        mAPILink.setOnClickListener(this);
+
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mAPILink) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://forecast.io/"));
+            startActivity(webIntent);
+        }
     }
 
 }
