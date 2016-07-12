@@ -54,12 +54,12 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.fragment_daily_forecast_detail, container, false);
         ButterKnife.bind(this, view);
 
-//        mDayOfWeek.setText(mForecast.getDailyTime());
+//        mDayOfWeek.setText(mForecast.getDayOfWeek());
         mDailySummary.setText(mForecast.getDailySummary());
         mIcon.setText(mForecast.getDailyIcon());
         Picasso.with(view.getContext()).load(R.drawable.icon_placeholder).into(mWeatherIconPlaceholder);
-        mHighTemperature.setText(Double.toString(mForecast.getDailyMaxTemp()) + "° F");
-        mLowTemperature.setText(Double.toString(mForecast.getDailyMinTemp()) + "° F");
+        mHighTemperature.setText("Daily High Temperature: " + Double.toString(mForecast.getDailyMaxTemp()) + "° F");
+        mLowTemperature.setText("Daily Low Temperature: " + Double.toString(mForecast.getDailyMinTemp()) + "° F");
 
         mAPILink.setOnClickListener(this);
 

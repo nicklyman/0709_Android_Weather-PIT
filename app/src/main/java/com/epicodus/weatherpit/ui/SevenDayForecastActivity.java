@@ -1,12 +1,14 @@
 package com.epicodus.weatherpit.ui;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -25,8 +27,9 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class SevenDayForecastActivity extends AppCompatActivity {
+public class SevenDayForecastActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = SevenDayForecastActivity.class.getSimpleName();
+    @Bind(R.id.forecastLinkTextView) TextView mAPILink;
 //    @Bind(R.id.forecastLinkTextView) TextView mForecastLinkTextView;
 //    @Bind(R.id.forecastListView) ListView mForecastListView;
 //    @Bind(R.id.locationTextView) TextView mLocationTextView;
@@ -52,7 +55,19 @@ public class SevenDayForecastActivity extends AppCompatActivity {
 //        mLocationTextView.setText(cityState);
 
         getDailySummary(cityState);
+
+        mAPILink.setOnClickListener(this);
     }
+
+    @Override
+    public void onClick(View view) {
+        if (view == mAPILink) {
+            Intent webIntent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://forecast.io/"));
+            startActivity(webIntent);
+        }
+    }
+
 
     private void getDailySummary(String cityState) {
         final ForecastService forecastService = new ForecastService();

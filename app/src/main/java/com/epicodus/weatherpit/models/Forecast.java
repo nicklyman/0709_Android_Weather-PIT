@@ -1,7 +1,11 @@
 package com.epicodus.weatherpit.models;
 
 
+import android.util.Log;
+
 import org.parceler.Parcel;
+
+import java.util.Calendar;
 
 @Parcel
 public class Forecast {
@@ -21,22 +25,22 @@ public Forecast(int time, String summary, String icon, double minTemp, double ma
     this.mMaxTemp = maxTemp;
     }
 
-    public int getDailyTime() {
-
+    public int getUnixTime() {
         return mTime;
     }
-    public String getDailySummary() {
 
+    public String getDailySummary() {
         return mSummary;
     }
-    public String getDailyIcon() {
 
+    public String getDailyIcon() {
         return mIcon;
     }
-    public double getDailyMinTemp() {
 
+    public double getDailyMinTemp() {
         return mMinTemp;
     }
+
     public double getDailyMaxTemp() {
         return mMaxTemp;
     }
