@@ -11,7 +11,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -53,11 +57,21 @@ public class ForecastService {
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
-                    Long time = summaryForecastJSON.getLong("time");
+                    long time = summaryForecastJSON.getLong("time");
+                    Log.d("Time from service b", time + "");
+
+                    //Move back to model
+                    long sevenHours = 25200;
+                    long unixSeconds =  (time + sevenHours) * 1000L;
+                    DateFormat date = new SimpleDateFormat("EEEE");
+                    String dayOfWeek = date.format(new Date(unixSeconds));
+
+                    Log.d("Time from service after", dayOfWeek);//Accurately printing day of week to console
+
                     String summary = summaryForecastJSON.getString("summary");
                     String icon = summaryForecastJSON.getString("icon");
-                    Double minTemp = summaryForecastJSON.getDouble("temperatureMin");
-                    Double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
+                    double minTemp = summaryForecastJSON.getDouble("temperatureMin");
+                    double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
                     Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp);
                     forecasts.add(forecast);

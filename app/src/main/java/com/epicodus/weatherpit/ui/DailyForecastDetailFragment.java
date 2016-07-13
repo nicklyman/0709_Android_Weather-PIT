@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,10 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         View view = inflater.inflate(R.layout.fragment_daily_forecast_detail, container, false);
         ButterKnife.bind(this, view);
 
-//        mDayOfWeek.setText(mForecast.getDayOfWeek());
+        Log.d("mForecast", mForecast.getDailyIcon() + " " + mForecast.getDailySummary() + " " + mForecast.getDayOfWeek());
+
+        mDayOfWeek.setText(mForecast.getDayOfWeek());
+        //mTime.setText(Long.toString(mForecast.getUnixTime());
         mDailySummary.setText(mForecast.getDailySummary());
         mIcon.setText(mForecast.getDailyIcon());
         Picasso.with(view.getContext()).load(R.drawable.icon_placeholder).into(mWeatherIconPlaceholder);

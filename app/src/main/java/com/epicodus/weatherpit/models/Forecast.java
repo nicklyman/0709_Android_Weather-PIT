@@ -53,11 +53,9 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     }
 
 
-
-    String timeStamp = String.valueOf(mTime);
-    long unixSeconds = Long.parseLong(timeStamp) * 1000L;
-
-    public String getDayOfWeek(long mTime) {
+    public String getDayOfWeek() {
+        String timeStamp = String.valueOf(mTime);
+        long unixSeconds = Long.parseLong(timeStamp) * 1000L;
         DateFormat date = new SimpleDateFormat("EEEE");
         String dayOfWeek = date.format(new Date());
         Log.v(TAG, dayOfWeek);
