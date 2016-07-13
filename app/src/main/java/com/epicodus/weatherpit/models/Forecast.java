@@ -3,13 +3,20 @@ package com.epicodus.weatherpit.models;
 
 import android.util.Log;
 
+import com.epicodus.weatherpit.ui.SevenDayForecastActivity;
+
 import org.parceler.Parcel;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 @Parcel
 public class Forecast {
-    private int mTime;
+    private static final String TAG = Forecast.class.getSimpleName();
+    private long mTime;
+    private String mDayOfWeek;
     private String mSummary;
     private String mIcon;
     private double mMinTemp;
@@ -17,7 +24,7 @@ public class Forecast {
 
     public Forecast() {}
 
-public Forecast(int time, String summary, String icon, double minTemp, double maxTemp) {
+public Forecast(long time, String summary, String icon, double minTemp, double maxTemp) {
     this.mTime = time;
     this.mSummary = summary;
     this.mIcon = icon;
@@ -25,7 +32,7 @@ public Forecast(int time, String summary, String icon, double minTemp, double ma
     this.mMaxTemp = maxTemp;
     }
 
-    public int getUnixTime() {
+    public long getUnixTime() {
         return mTime;
     }
 
@@ -44,4 +51,21 @@ public Forecast(int time, String summary, String icon, double minTemp, double ma
     public double getDailyMaxTemp() {
         return mMaxTemp;
     }
+
+
+
+    String timeStamp = String.valueOf(mTime);
+    long unixSeconds = Long.parseLong(timeStamp) * 1000L;
+
+    public String getDayOfWeek(long mTime) {
+        DateFormat date = new SimpleDateFormat("EEEE");
+        String dayOfWeek = date.format(new Date());
+        Log.v(TAG, dayOfWeek);
+        return dayOfWeek;
+    }
 }
+
+
+
+
+

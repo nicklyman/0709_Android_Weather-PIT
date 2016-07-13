@@ -53,7 +53,7 @@ public class ForecastService {
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
-                    Integer time = summaryForecastJSON.getInt("time");
+                    Long time = summaryForecastJSON.getLong("time");
                     String summary = summaryForecastJSON.getString("summary");
                     String icon = summaryForecastJSON.getString("icon");
                     Double minTemp = summaryForecastJSON.getDouble("temperatureMin");

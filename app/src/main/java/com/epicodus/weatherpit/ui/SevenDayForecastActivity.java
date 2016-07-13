@@ -19,7 +19,10 @@ import com.epicodus.weatherpit.models.Forecast;
 import com.epicodus.weatherpit.services.ForecastService;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,8 +51,6 @@ public class SevenDayForecastActivity extends AppCompatActivity implements View.
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mForecasts);
 //        mForecastListView.setAdapter(adapter);
 
-//        mForecastLinkTextView.setText(Html.fromHtml("Powered by Forecast<a href=\"http://forecast.io/\"></a>"));
-
         Intent intent = getIntent();
         String cityState = intent.getStringExtra("cityState");
 //        mLocationTextView.setText(cityState);
@@ -67,7 +68,6 @@ public class SevenDayForecastActivity extends AppCompatActivity implements View.
             startActivity(webIntent);
         }
     }
-
 
     private void getDailySummary(String cityState) {
         final ForecastService forecastService = new ForecastService();
