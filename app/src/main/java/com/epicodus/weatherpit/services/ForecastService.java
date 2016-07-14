@@ -58,16 +58,6 @@ public class ForecastService {
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
                     long time = summaryForecastJSON.getLong("time");
-                    Log.d("Time from service b", time + "");
-
-                    //Move back to model
-                    long sevenHours = 25200;
-                    long unixSeconds =  (time + sevenHours) * 1000L;
-                    DateFormat date = new SimpleDateFormat("EEEE");
-                    String dayOfWeek = date.format(new Date(unixSeconds));
-
-                    Log.d("Time from service after", dayOfWeek);//Accurately printing day of week to console
-
                     String summary = summaryForecastJSON.getString("summary");
                     String icon = summaryForecastJSON.getString("icon");
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");

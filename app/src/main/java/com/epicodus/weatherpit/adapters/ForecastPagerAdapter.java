@@ -30,7 +30,7 @@ public class ForecastPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-        return mForecasts.get(position).getDailyIcon(); //Want to convert unix time to date and use day of week
+        return mForecasts.get(position).getDayOfWeek();
     }
 
 }

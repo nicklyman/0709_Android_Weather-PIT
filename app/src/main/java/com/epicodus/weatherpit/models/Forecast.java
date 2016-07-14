@@ -54,12 +54,19 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
 
 
     public String getDayOfWeek() {
-        String timeStamp = String.valueOf(mTime);
-        long unixSeconds = Long.parseLong(timeStamp) * 1000L;
-        DateFormat date = new SimpleDateFormat("EEEE");
-        String dayOfWeek = date.format(new Date());
-        Log.v(TAG, dayOfWeek);
+        long sevenHours = 25200;
+        long unixSeconds =  (mTime + sevenHours) * 1000L;
+        DateFormat day = new SimpleDateFormat("EEEE");
+        String dayOfWeek = day.format(new Date(unixSeconds));
         return dayOfWeek;
+    }
+
+    public String getRandomYear() {
+        long sevenHours = 25200;
+        long unixSeconds =  (mTime + sevenHours) * 1000L;
+        DateFormat year = new SimpleDateFormat("YYYY");
+        String randomYear = year.format(new Date(unixSeconds));
+        return randomYear;
     }
 }
 
