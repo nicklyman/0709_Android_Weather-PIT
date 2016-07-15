@@ -22,7 +22,6 @@ import butterknife.ButterKnife;
 
 
 public class DailyForecastDetailFragment extends Fragment implements View.OnClickListener {
-//    @Bind(R.id.summaryTextView) TextView mDayOfWeek;
     @Bind(R.id.dailySummaryTextView) TextView mDailySummary;
     @Bind(R.id.iconTextView) TextView mIcon;
     @Bind(R.id.weatherImageView) ImageView mWeatherIconPlaceholder;
@@ -31,7 +30,6 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
     @Bind(R.id.forecastLinkTextView) TextView mAPILink;
 
     private Forecast mForecast;
-
 
     public static DailyForecastDetailFragment newInstance(Forecast forecast) {
         DailyForecastDetailFragment dailyForecastDetailFragment = new DailyForecastDetailFragment();
@@ -55,10 +53,30 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         ButterKnife.bind(this, view);
 
 
-//        mDayOfWeek.setText(mForecast.getDayOfWeek());
         mDailySummary.setText(mForecast.getDailySummary());
-        mIcon.setText(mForecast.getDailyIcon());
-        Picasso.with(view.getContext()).load(R.drawable.icon_placeholder).into(mWeatherIconPlaceholder);
+        if (mForecast.getDailyIcon().equals("clear-day")){
+            Picasso.with(view.getContext()).load(R.drawable.clear_day).into(mWeatherIconPlaceholder);
+        } if (mForecast.getDailyIcon().equals("clear-night")){
+            Picasso.with(view.getContext()).load(R.drawable.clear_night).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("rain")){
+            Picasso.with(view.getContext()).load(R.drawable.rain).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("snow")){
+            Picasso.with(view.getContext()).load(R.drawable.snow).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("sleet")){
+            Picasso.with(view.getContext()).load(R.drawable.sleet).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("wind")){
+            Picasso.with(view.getContext()).load(R.drawable.wind).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("fog")){
+            Picasso.with(view.getContext()).load(R.drawable.fog).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("cloudy")){
+            Picasso.with(view.getContext()).load(R.drawable.cloudy).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("partly-cloudy-day")){
+            Picasso.with(view.getContext()).load(R.drawable.partly_cloudy_day).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("partly-cloudy-night")){
+            Picasso.with(view.getContext()).load(R.drawable.partly_cloudy_night).into(mWeatherIconPlaceholder);
+        } if(mForecast.getDailyIcon().equals("")){
+            Picasso.with(view.getContext()).load(R.drawable.weather_clock_icon).into(mWeatherIconPlaceholder);
+        }
         mHighTemperature.setText("Daily High Temperature: " + Double.toString(mForecast.getDailyMaxTemp()) + "° F");
         mLowTemperature.setText("Daily Low Temperature: " + Double.toString(mForecast.getDailyMinTemp()) + "° F");
 

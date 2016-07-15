@@ -75,7 +75,6 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:id="@+id/weatherImageView"
-                    android:src="@drawable/icon_placeholder"
                     android:scaleType="centerCrop"
                     android:layout_gravity="center_horizontal" />
 
