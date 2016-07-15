@@ -35,8 +35,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view == mGetWeatherButton) {
-            String cityState = mUserInputEditText.getText().toString();
+        final String cityState = mUserInputEditText.getText().toString().trim();
+
+        if(cityState.equals("")){
+            mUserInputEditText.setError("Please enter a city and state (i.e. Portland, Oregon");
+        }
+        else if(view == mGetWeatherButton) {
             Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
             intent.putExtra("cityState", cityState);
             startActivity(intent);
