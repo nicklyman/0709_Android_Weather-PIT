@@ -1,10 +1,16 @@
 package com.epicodus.weatherpit.adapters;
 
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.epicodus.weatherpit.R;
 import com.epicodus.weatherpit.models.Forecast;
 import com.epicodus.weatherpit.ui.DailyForecastDetailFragment;
 
@@ -32,5 +38,4 @@ public class ForecastPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         return mForecasts.get(position).getDayOfWeek();
     }
-
 }

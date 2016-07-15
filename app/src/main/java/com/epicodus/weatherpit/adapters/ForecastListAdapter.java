@@ -47,7 +47,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
     }
 
     public class ForecastViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-//        @Bind(R.id.dailyTimeTextView) TextView mDailyTimeTextView;
+        @Bind(R.id.dailyTimeTextView) TextView mDailyTimeTextView;
         @Bind(R.id.dailySummaryTextView) TextView mDailySummaryTextView;
 
         private Context mContext;
@@ -69,7 +69,7 @@ public class ForecastListAdapter extends RecyclerView.Adapter<ForecastListAdapte
         }
 
         public void bindForecast(Forecast forecast) {
-//            mDailyTimeTextView.setText(forecast.getDailyTime());
+            mDailyTimeTextView.setText(forecast.getDayOfWeek());
             mDailySummaryTextView.setText(forecast.getDailySummary());
         }
     }
