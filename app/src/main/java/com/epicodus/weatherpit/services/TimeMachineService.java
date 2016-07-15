@@ -51,6 +51,11 @@ public class TimeMachineService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject forecastServiceJSON = new JSONObject(jsonData);
+
+                long timeOffset = forecastServiceJSON.getLong("offset");
+                double latitude = forecastServiceJSON.getDouble("latitude");
+                double longitude = forecastServiceJSON.getDouble("longitude");
+
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
@@ -60,7 +65,7 @@ public class TimeMachineService {
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");
                     double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, latitude, longitude);
                     forecasts.add(forecast);
                 }
             }

@@ -21,15 +21,21 @@ public class Forecast {
     private String mIcon;
     private double mMinTemp;
     private double mMaxTemp;
+    private long mTimeOffset;
+    private double mLatitude;
+    private double mLongitude;
 
     public Forecast() {}
 
-public Forecast(long time, String summary, String icon, double minTemp, double maxTemp) {
+public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude) {
     this.mTime = time;
     this.mSummary = summary;
     this.mIcon = icon;
     this.mMinTemp = minTemp;
     this.mMaxTemp = maxTemp;
+    this.mTimeOffset = timeOffset;
+    this.mLatitude = latitude;
+    this.mLongitude = longitude;
     }
 
     public long getUnixTime() {
@@ -52,10 +58,19 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
         return mMaxTemp;
     }
 
+    public long getTimeOffset() { return mTimeOffset; }
+
+    public double getLatitude() { return mLatitude; }
+
+    public double getLongitude() { return mLongitude; }
+
 
     public String getDayOfWeek() {
-        long sevenHours = 25200;
-        long unixSeconds =  (mTime + sevenHours) * 1000L;
+        long timeOffset = mTimeOffset * (-1);
+        String timeTest = Long.toString(timeOffset);
+        Log.v("time= ", timeTest);
+        long timeOffsetSeconds = timeOffset * 3600;
+        long unixSeconds =  (mTime + timeOffsetSeconds) * 1000L;
         DateFormat day = new SimpleDateFormat("EEEE");
         String dayOfWeek = day.format(new Date(unixSeconds));
         return dayOfWeek;

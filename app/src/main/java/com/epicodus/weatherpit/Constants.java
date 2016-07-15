@@ -8,6 +8,7 @@ public class Constants {
     public static final String Latitude = "45.523452"; //Decimal degrees
     public static final String Longitude = "-122.676207"; //Decimal degrees
     public static final String Time = "1468556360"; //Unix or [YYYY]-[MM]-[DD]T[HH]:[MM]:[SS]
+    public static final String PREFERENCES_LOCATION_KEY = "cityState";
 }
 
 

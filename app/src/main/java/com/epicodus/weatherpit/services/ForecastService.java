@@ -54,6 +54,15 @@ public class ForecastService {
             String jsonData = response.body().string();
             if (response.isSuccessful()) {
                 JSONObject forecastServiceJSON = new JSONObject(jsonData);
+
+//                JSONObject forecastServiceOffsetJSON = new JSONObject(jsonData);
+//                JSONObject timeOffsetJSON = forecastServiceOffsetJSON.getJSONObject("offset");
+//                int timeOffset = timeOffsetJSON.getInt("offset");
+
+                long timeOffset = forecastServiceJSON.getLong("offset");
+                double latitude = forecastServiceJSON.getDouble("latitude");
+                double longitude = forecastServiceJSON.getDouble("longitude");
+
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
@@ -63,9 +72,12 @@ public class ForecastService {
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");
                     double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp);
+//                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, latitude, longitude);
                     forecasts.add(forecast);
                 }
+
+
             }
         } catch (IOException e) {
             e.printStackTrace();

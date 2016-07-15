@@ -12,15 +12,21 @@ public class TimeMachine {
     private String mIcon;
     private double mMinTemp;
     private double mMaxTemp;
+    private long mTimeOffset;
+    private double mLatitude;
+    private double mLongitude;
 
     public TimeMachine() {}
 
-    public TimeMachine(long time, String summary, String icon, double minTemp, double maxTemp) {
+    public TimeMachine(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude) {
         this.mTime = time;
         this.mSummary = summary;
         this.mIcon = icon;
         this.mMinTemp = minTemp;
         this.mMaxTemp = maxTemp;
+        this.mTimeOffset = timeOffset;
+        this.mLatitude = latitude;
+        this.mLongitude = longitude;
     }
 
     public long getUnixTime() {
@@ -42,6 +48,12 @@ public class TimeMachine {
     public double getDailyMaxTemp() {
         return mMaxTemp;
     }
+
+    public long getTimeOffset() { return mTimeOffset; }
+
+    public double getLatitude() { return mLatitude; }
+
+    public double getLongitude() { return mLongitude; }
 
 
     public String getRandomYear() {

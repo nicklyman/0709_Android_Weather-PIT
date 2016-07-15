@@ -1,7 +1,9 @@
 package com.epicodus.weatherpit.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
+import com.epicodus.weatherpit.Constants;
 import com.epicodus.weatherpit.R;
 
 import butterknife.Bind;
@@ -21,6 +24,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.userInputEditText) EditText mUserInputEditText;
     @Bind(R.id.titleTextView) TextView mTitleTextView;
 
+//    private SharedPreferences mSharedPreferences;
+//    private SharedPreferences.Editor mEditor;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ButterKnife.bind(this);
         Typeface oswaldFont = Typeface.createFromAsset(getAssets(), "fonts/Oswald-Bold.ttf");
         mTitleTextView.setTypeface(oswaldFont);
+
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mEditor = mSharedPreferences.edit();
+
         mGetWeatherButton.setOnClickListener(this);
         mAboutAppButton.setOnClickListener(this);
     }
@@ -38,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         final String cityState = mUserInputEditText.getText().toString().trim();
 
         if(cityState.equals("")){
-            mUserInputEditText.setError("Please enter a city and state (i.e. Portland, Oregon");
+//            addToSharedPreferences(cityState);
+            mUserInputEditText.setError("Please enter a city and state (i.e. Portland, Oregon)");
         }
         else if(view == mGetWeatherButton) {
             Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
@@ -50,4 +61,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
+
+//    private void addToSharedPreferences(String cityState) {
+//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, cityState).apply();
+//    }
 }
