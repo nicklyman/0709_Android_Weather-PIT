@@ -77,8 +77,8 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         } if(mForecast.getDailyIcon().equals("")){
             Picasso.with(view.getContext()).load(R.drawable.weather_clock_icon).into(mWeatherIconPlaceholder);
         }
-        mHighTemperature.setText("Daily High Temperature: " + Double.toString(mForecast.getDailyMaxTemp()) + "° F");
-        mLowTemperature.setText("Daily Low Temperature: " + Double.toString(mForecast.getDailyMinTemp()) + "° F");
+        mHighTemperature.setText("High Temperature:  " + Double.toString(mForecast.getDailyMaxTemp()) + "° F");
+        mLowTemperature.setText("Low Temperature:  " + Double.toString(mForecast.getDailyMinTemp()) + "° F");
 
         mAPILink.setOnClickListener(this);
 
