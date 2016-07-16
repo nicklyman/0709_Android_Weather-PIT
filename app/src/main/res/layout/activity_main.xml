@@ -18,87 +18,113 @@
         android:layout_height="wrap_content"
         android:text="Weather"
         android:id="@+id/titleTextView"
-        android:layout_marginTop="10dp"
         android:textSize="60sp"
         android:textColor="@color/colorMatchImage"
         android:textStyle="bold"
         android:layout_below="@+id/aboutAppButton"
         android:layout_centerHorizontal="true" />
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/pointTextView"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="P"
-        android:id="@+id/titleTextView2"
-        android:layout_marginTop="5dp"
-        android:textSize="60sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:layout_below="@+id/titleTextView"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@id/titleTextView"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P"
+            android:id="@+id/titleTextView2"
+            android:layout_marginTop="1dp"
+            android:textSize="60sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:layout_below="@+id/titleTextView"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="oint"
-        android:id="@+id/titleTextView2b"
-        android:textSize="30sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:textIsSelectable="false"
-        android:layout_alignTop="@+id/titleTextView2"
-        android:layout_toRightOf="@+id/titleTextView2"
-        android:layout_toEndOf="@+id/titleTextView2" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="oint"
+            android:id="@+id/titleTextView2b"
+            android:textSize="30sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            android:layout_alignTop="@+id/titleTextView2"
+            android:layout_toRightOf="@+id/titleTextView2"
+            android:layout_toEndOf="@+id/titleTextView2" />
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/inTextView"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="I"
-        android:id="@+id/titleTextView3"
-        android:layout_marginTop="5dp"
-        android:textSize="60sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:layout_below="@+id/titleTextView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/pointTextView"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I"
+            android:id="@+id/titleTextView3"
+            android:layout_marginTop="1dp"
+            android:textSize="60sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:layout_below="@+id/titleTextView2"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="n"
-        android:id="@+id/titleTextView3b"
-        android:textSize="30sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:textIsSelectable="false"
-        android:layout_alignTop="@+id/titleTextView3"
-        android:layout_toRightOf="@+id/titleTextView3"
-        android:layout_toEndOf="@+id/titleTextView3" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="n"
+            android:id="@+id/titleTextView3b"
+            android:textSize="30sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            android:layout_alignTop="@+id/titleTextView3"
+            android:layout_toRightOf="@+id/titleTextView3"
+            android:layout_toEndOf="@+id/titleTextView3" />
+    </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/timeTextView"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="T"
-        android:id="@+id/titleTextView4"
-        android:layout_marginTop="5dp"
-        android:textSize="60sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:layout_below="@+id/titleTextView3"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/inTextView"
+        android:gravity="center"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="T"
+            android:id="@+id/titleTextView4"
+            android:layout_marginTop="1dp"
+            android:textSize="60sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:layout_below="@+id/titleTextView3"
+            android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ime"
-        android:id="@+id/titleTextView4b"
-        android:textSize="30sp"
-        android:textColor="@color/colorMatchImage"
-        android:textStyle="bold"
-        android:textIsSelectable="false"
-        android:layout_alignTop="@+id/titleTextView4"
-        android:layout_toRightOf="@+id/titleTextView4"
-        android:layout_toEndOf="@+id/titleTextView4" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ime"
+            android:id="@+id/titleTextView4b"
+            android:textSize="30sp"
+            android:textColor="@color/colorMatchImage"
+            android:textStyle="bold"
+            android:textIsSelectable="false"
+            android:layout_alignTop="@+id/titleTextView4"
+            android:layout_toRightOf="@+id/titleTextView4"
+            android:layout_toEndOf="@+id/titleTextView4" />
+    </LinearLayout>
 
     <Spinner
         android:spinnerMode="dropdown"
