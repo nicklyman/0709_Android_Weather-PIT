@@ -23,7 +23,7 @@ import butterknife.ButterKnife;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
     @Bind(R.id.aboutAppButton) Button mAboutAppButton;
-    @Bind(R.id.userInputEditText) EditText mUserInputEditText;
+    @Bind(R.id.selectCityTextView) TextView mSelectCityTextView;
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.cityListSpinner) Spinner mCityListSpinner;
 
@@ -56,13 +56,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        final String cityState = mUserInputEditText.getText().toString().trim();
+        final String cityState = mSelectCityTextView.getText().toString();
 
-        if(cityState.equals("")){
 //            addToSharedPreferences(cityState);
-            mUserInputEditText.setError("Please enter a city and state (i.e. Portland, Oregon)");
-        }
-        else if(view == mGetWeatherButton) {
+
+        if(view == mGetWeatherButton) {
             Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
             intent.putExtra("cityState", cityState);
             startActivity(intent);
