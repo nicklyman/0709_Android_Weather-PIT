@@ -22,7 +22,7 @@ import butterknife.ButterKnife;
 
 
 public class DailyForecastDetailFragment extends Fragment implements View.OnClickListener {
-    @Bind(R.id.dailySummaryTextView) TextView mDailySummary;
+    @Bind(R.id.hourlySummaryTextView) TextView mHourlySummary;
     @Bind(R.id.iconTextView) TextView mIcon;
     @Bind(R.id.weatherImageView) ImageView mWeatherIconPlaceholder;
     @Bind(R.id.highTemperatureTextView) TextView mHighTemperature;
@@ -53,7 +53,7 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         ButterKnife.bind(this, view);
 
 
-        mDailySummary.setText(mForecast.getDailySummary());
+        mHourlySummary.setText(mForecast.getDailySummary());
         if (mForecast.getDailyIcon().equals("clear-day")){
             Picasso.with(view.getContext()).load(R.drawable.clear_day).into(mWeatherIconPlaceholder);
         } if (mForecast.getDailyIcon().equals("clear-night")){

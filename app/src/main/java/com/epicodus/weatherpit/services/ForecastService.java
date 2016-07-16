@@ -34,6 +34,8 @@ public class ForecastService {
 //        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
 //        String url = urlBuilder.build().toString();
 
+
+
         String url = Constants.BaseURL + Constants.Key + "/" + Constants.Latitude + "," + Constants.Longitude;
 
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423
@@ -55,9 +57,8 @@ public class ForecastService {
             if (response.isSuccessful()) {
                 JSONObject forecastServiceJSON = new JSONObject(jsonData);
 
-//                JSONObject forecastServiceOffsetJSON = new JSONObject(jsonData);
-//                JSONObject timeOffsetJSON = forecastServiceOffsetJSON.getJSONObject("offset");
-//                int timeOffset = timeOffsetJSON.getInt("offset");
+//                JSONObject hourlySummaryJSON = forecastServiceJSON.getJSONObject("hourly").getJSONObject("summary");
+//                String hourlySummary = hourlySummaryJSON.getString("summary");
 
                 long timeOffset = forecastServiceJSON.getLong("offset");
                 double latitude = forecastServiceJSON.getDouble("latitude");
@@ -72,7 +73,6 @@ public class ForecastService {
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");
                     double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-//                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset);
                     Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, latitude, longitude);
                     forecasts.add(forecast);
                 }

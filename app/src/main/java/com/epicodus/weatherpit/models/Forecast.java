@@ -1,14 +1,22 @@
 package com.epicodus.weatherpit.models;
 
 
+import android.content.res.AssetManager;
 import android.util.Log;
 
 import com.epicodus.weatherpit.ui.SevenDayForecastActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.parceler.Parcel;
 
+import java.io.IOError;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -18,6 +26,7 @@ public class Forecast {
     private long mTime;
     private String mDayOfWeek;
     private String mSummary;
+//    private String mHourlySummary;
     private String mIcon;
     private double mMinTemp;
     private double mMaxTemp;
@@ -30,6 +39,7 @@ public class Forecast {
 public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude) {
     this.mTime = time;
     this.mSummary = summary;
+//    this.mHourlySummary = hourlySummary;
     this.mIcon = icon;
     this.mMinTemp = minTemp;
     this.mMaxTemp = maxTemp;
@@ -45,6 +55,8 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     public String getDailySummary() {
         return mSummary;
     }
+
+//    public String getHourlySummary() { return mHourlySummary; }
 
     public String getDailyIcon() {
         return mIcon;
@@ -67,21 +79,11 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
 
     public String getDayOfWeek() {
         long timeOffset = mTimeOffset * (-1);
-        String timeTest = Long.toString(timeOffset);
-        Log.v("time= ", timeTest);
         long timeOffsetSeconds = timeOffset * 3600;
         long unixSeconds =  (mTime + timeOffsetSeconds) * 1000L;
         DateFormat day = new SimpleDateFormat("EEEE");
         String dayOfWeek = day.format(new Date(unixSeconds));
         return dayOfWeek;
-    }
-
-    public String getRandomYear() {
-        long sevenHours = 25200;
-        long unixSeconds =  (mTime + sevenHours) * 1000L;
-        DateFormat year = new SimpleDateFormat("YYYY");
-        String randomYear = year.format(new Date(unixSeconds));
-        return randomYear;
     }
 }
 
