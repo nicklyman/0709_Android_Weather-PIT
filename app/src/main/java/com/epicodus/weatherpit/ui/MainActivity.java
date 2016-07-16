@@ -7,8 +7,10 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.aboutAppButton) Button mAboutAppButton;
     @Bind(R.id.userInputEditText) EditText mUserInputEditText;
     @Bind(R.id.titleTextView) TextView mTitleTextView;
+    @Bind(R.id.cityListSpinner) Spinner mCityListSpinner;
 
 //    private SharedPreferences mSharedPreferences;
 //    private SharedPreferences.Editor mEditor;
@@ -41,7 +44,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         mGetWeatherButton.setOnClickListener(this);
         mAboutAppButton.setOnClickListener(this);
+
+        //Spinner
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cityList, android.R.layout.simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mCityListSpinner.setAdapter(adapter);
     }
+
+
+
 
     @Override
     public void onClick(View view) {
