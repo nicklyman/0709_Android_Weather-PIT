@@ -16,9 +16,17 @@ import android.widget.TextView;
 
 import com.epicodus.weatherpit.Constants;
 import com.epicodus.weatherpit.R;
+import com.epicodus.weatherpit.models.HistoricForecast;
+import com.epicodus.weatherpit.services.HistoricForecastService;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
@@ -29,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //    private SharedPreferences mSharedPreferences;
 //    private SharedPreferences.Editor mEditor;
+
 
 
     @Override
@@ -70,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
+
+
 
 //    private void addToSharedPreferences(String cityState) {
 //        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, cityState).apply();

@@ -42,8 +42,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="2dp"
-        android:text="The historic hourly temperatures for this date in year 1979 is shown in blue: Light rain in the morning and afternoon, with a high temperature of 65° around 5 PM, and a low of 54° around 5 AM. The sun rose at 5:27 AM and set at 9:04 PM."
         android:textColor="@color/colorPrimaryText"
+        android:text="TEST"
         android:textAlignment="center"
         android:background="@drawable/border_style"
         android:id="@+id/historicWeatherTextView"
@@ -89,5 +89,13 @@
         android:id="@+id/sevenDayForecastButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/historicTestListView"
+        android:layout_above="@+id/sevenDayForecastButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp" />
 
 </RelativeLayout>

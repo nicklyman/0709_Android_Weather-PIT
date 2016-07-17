@@ -61,7 +61,7 @@ public class HistoricForecastService {
 //                JSONObject hourlySummaryJSON = forecastServiceJSON.getJSONObject("hourly").getJSONObject("summary");
 //                String hourlySummary = hourlySummaryJSON.getString("summary");
 
-                long timeOffset = historicForecastServiceJSON.getLong("offset");
+                long historicTimeOffset = historicForecastServiceJSON.getLong("offset");
                 double latitude = historicForecastServiceJSON.getDouble("latitude");
                 double longitude = historicForecastServiceJSON.getDouble("longitude");
 
@@ -72,9 +72,11 @@ public class HistoricForecastService {
                     String dailyHistoricSummary = summaryHistoricForecastJSON.getString("summary");
                     double minHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMin");
                     double maxHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMax");
+                    Log.v("summary", dailyHistoricSummary);
 
-                    HistoricForecast forecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, timeOffset);
-                    historicForecasts.add(forecast);
+
+                    HistoricForecast historicForecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, historicTimeOffset);
+                    historicForecasts.add(historicForecast);
                 }
             }
         } catch (IOException e) {
