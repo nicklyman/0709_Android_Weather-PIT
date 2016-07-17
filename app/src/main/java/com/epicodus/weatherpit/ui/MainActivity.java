@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,6 +19,11 @@ import com.epicodus.weatherpit.Constants;
 import com.epicodus.weatherpit.R;
 import com.epicodus.weatherpit.models.HistoricForecast;
 import com.epicodus.weatherpit.services.HistoricForecastService;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,6 +35,10 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    private DatabaseReference mCityCoordinatesReference;
+    private ValueEventListener mCityCoordinatesReferenceListener;
+
     @Bind(R.id.getWeatherButton) Button mGetWeatherButton;
     @Bind(R.id.aboutAppButton) Button mAboutAppButton;
     @Bind(R.id.selectCityTextView) TextView mSelectCityTextView;
@@ -42,6 +52,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        mCityCoordinatesReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_CITY_COORDINATES);
+
+        mCityCoordinatesReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot cityCoordinatesSnapshot : dataSnapshot.getChildren()) {
+                    String cityStateInfo = cityCoordinatesSnapshot.getValue().toString();
+                    Log.d("cities: ", cityStateInfo);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
@@ -58,6 +89,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cityList, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCityListSpinner.setAdapter(adapter);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
     }
 
 
