@@ -26,6 +26,7 @@ import com.epicodus.weatherpit.models.HistoricForecast;
 import com.epicodus.weatherpit.services.HistoricForecastService;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
 import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
@@ -46,10 +47,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;
     @Bind(R.id.historicWeatherTextView) TextView mHistoricWeatherTextView;
     @Bind(R.id.currentWeatherTextView) TextView mCurrentWeatherTextView;
-    @Bind(R.id.historicTestListView) ListView mHistoricTestListView;
-
-//    private SharedPreferences mSharedPreferences;
-//    private String mRecentLocation;
 
     public ArrayList<HistoricForecast> mHistoricForecasts = new ArrayList<>();
 
@@ -68,20 +65,8 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
         getHistoricDailySummary(cityState);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentLocation = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
-//        if (mRecentLocation != null) {
-//
-//        }
-
         mSevenDayForecastButton.setOnClickListener(this);
         mAPILink.setOnClickListener(this);
-
-//        String historicMinTemp = Double.toString(mHistoricForecast.getHistoricDailyMinTemp());
-//        String historicMaxTemp = Double.toString(mHistoricForecast.getHistoricDailyMaxTemp());
-        mHistoricWeatherTextView.setText("I am not able to access information from the model and am stuck.");
-
-//        mHistoricWeatherTextView.setText("The weather for this day in year had a low temperature of " + historicMinTemp + "°F and a high temperature of " + historicMaxTemp + "°F.");
     }
 
     @Override
@@ -107,16 +92,25 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
             }
 
             @Override
-            public void onResponse(Call call, Response response) {
+            public void onResponse(Call call, Response response) throws IOException {
+
+
                 mHistoricForecasts = historicForecastService.processResults(response);
+
+
 
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        //                mHistoricWeatherTextView.setText("The weather on this date in year " + mHistoricForecast.getRandomYear() + " was: " + mHistoricForecast.getHistoricDailySummary() + ". The high for the day was " + mHistoricForecast.getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecast.getHistoricDailyMinTemp() + "°F.");
+                        mHistoricWeatherTextView.setText("I have no access to the model here - HELP...");
                     }
+
                 });
+
             }
         });
+
     }
 }
+
