@@ -23,6 +23,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.io.IOException;
@@ -44,10 +45,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.selectCityTextView) TextView mSelectCityTextView;
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.cityListSpinner) Spinner mCityListSpinner;
-
-//    private SharedPreferences mSharedPreferences;
-//    private SharedPreferences.Editor mEditor;
-
 
 
     @Override
@@ -79,8 +76,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Typeface oswaldFont = Typeface.createFromAsset(getAssets(), "fonts/Oswald-Bold.ttf");
         mTitleTextView.setTypeface(oswaldFont);
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mEditor = mSharedPreferences.edit();
 
         mGetWeatherButton.setOnClickListener(this);
         mAboutAppButton.setOnClickListener(this);
@@ -97,16 +92,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
     }
 
-
-
-
     @Override
     public void onClick(View view) {
         final String cityState = mSelectCityTextView.getText().toString();
 
-//            addToSharedPreferences(cityState);
-
         if(view == mGetWeatherButton) {
+            int city = mCityListSpinner.getSelectedItemPosition();
+            Query query = FirebaseDatabase.getInstance().getReference("cities").child(city + "");
+            Log.d("Query: ", query.toString());
+            query.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    Log.d("dataSnapshot: ", dataSnapshot.toString());
+                    double lat = dataSnapshot.child("latitude").getValue(Double.class);
+                    double lng = dataSnapshot.child("longitude").getValue(Double.class);
+                    Log.d("lat and lng: ", lat + " " + lng);
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
             Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
             intent.putExtra("cityState", cityState);
             startActivity(intent);
@@ -116,10 +123,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             startActivity(intent);
         }
     }
-
-
-
-//    private void addToSharedPreferences(String cityState) {
-//        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, cityState).apply();
-//    }
 }
