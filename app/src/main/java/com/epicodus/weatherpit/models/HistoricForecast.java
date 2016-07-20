@@ -1,10 +1,13 @@
 package com.epicodus.weatherpit.models;
 
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.util.Log;
 
+import com.epicodus.weatherpit.services.HistoricForecastService;
 import com.epicodus.weatherpit.ui.CurrentHistoricWeatherActivity;
+import com.epicodus.weatherpit.ui.MainActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;

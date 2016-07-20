@@ -52,10 +52,10 @@ public class SevenDayForecastActivity extends AppCompatActivity implements View.
 //        mForecastListView.setAdapter(adapter);
 
         Intent intent = getIntent();
-        String cityState = intent.getStringExtra("cityState");
-//        mLocationTextView.setText(cityState);
+        double lat = intent.getDoubleExtra("lat", 0.0);
+        double lng = intent.getDoubleExtra("lng", 0.0);
 
-        getDailySummary(cityState);
+        getDailySummary(lat, lng);
 
         mAPILink.setOnClickListener(this);
     }
@@ -69,9 +69,9 @@ public class SevenDayForecastActivity extends AppCompatActivity implements View.
         }
     }
 
-    private void getDailySummary(String cityState) {
+    private void getDailySummary(Double lat, Double lng) {
         final ForecastService forecastService = new ForecastService();
-        forecastService.findForecast(cityState, new Callback() {
+        forecastService.findForecast(lat, lng, new Callback() {
 
         @Override
             public void onFailure(Call call, IOException e) {

@@ -25,7 +25,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class ForecastService {
-    public static void findForecast(String userInputEditText, Callback callback) {
+    public static void findForecast(Double lat, Double lng, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
 //        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BaseURL).newBuilder();
@@ -34,9 +34,8 @@ public class ForecastService {
 //        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
 //        String url = urlBuilder.build().toString();
 
-
-
-        String url = Constants.BaseURL + Constants.Key + "/" + Constants.Latitude + "," + Constants.Longitude;
+        
+        String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng;
 
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423
 
@@ -57,12 +56,9 @@ public class ForecastService {
             if (response.isSuccessful()) {
                 JSONObject forecastServiceJSON = new JSONObject(jsonData);
 
-//                JSONObject hourlySummaryJSON = forecastServiceJSON.getJSONObject("hourly").getJSONObject("summary");
-//                String hourlySummary = hourlySummaryJSON.getString("summary");
-
                 long timeOffset = forecastServiceJSON.getLong("offset");
-                double latitude = forecastServiceJSON.getDouble("latitude");
-                double longitude = forecastServiceJSON.getDouble("longitude");
+                double lat = forecastServiceJSON.getDouble("latitude");
+                double lng = forecastServiceJSON.getDouble("longitude");
 
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
@@ -73,11 +69,9 @@ public class ForecastService {
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");
                     double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
 
-                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, latitude, longitude);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng);
                     forecasts.add(forecast);
                 }
-
-
             }
         } catch (IOException e) {
             e.printStackTrace();

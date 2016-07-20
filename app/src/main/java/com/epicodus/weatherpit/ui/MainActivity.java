@@ -86,11 +86,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mCityListSpinner.setAdapter(adapter);
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
-    }
+
+
+    //Breaks code when UpArrow clicked
+//    @Override
+//    protected void onDestroy() {
+//        super.onDestroy();
+//        mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
+//    }
+
+
 
     @Override
     public void onClick(View view) {
@@ -107,8 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double lng = dataSnapshot.child("longitude").getValue(Double.class);
                     Log.d("lat and lng: ", lat + " " + lng);
 
-
-                    //final String cityState = mSelectCityTextView.getText().toString();
                     Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
                     intent.putExtra("lat", lat);
                     intent.putExtra("lng", lng);

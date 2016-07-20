@@ -50,7 +50,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
     public ArrayList<HistoricForecast> mHistoricForecasts = new ArrayList<>();
 
-      private HistoricForecast mHistoricForecast;
+    private HistoricForecast mHistoricForecast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +62,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lng = intent.getDoubleExtra("lng", 0.0);
-//        String latitude = Double.toString(lat);
-//        String longitude = Double.toString(lng);
-//        String coordinates = latitude + "," + longitude;
 
-        //mLocationTextView.setText(cityState);
-
-//        Log.d("cityState", cityState + "?");
         getHistoricDailySummary(lat, lng);
 
         mSevenDayForecastButton.setOnClickListener(this);
@@ -102,14 +96,13 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                 mHistoricForecasts = historicForecastService.processResults(response);
                 Log.v(TAG, mHistoricForecasts.get(0).getHistoricDailySummary());
 
+                mHistoricWeatherTextView.setText("The weather on this date in year XXXX was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + ". The high for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
+
 
 
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        //Log.v(TAG, mHistoricForecast.getHistoricDailySummary());
-                        //                mHistoricWeatherTextView.setText("The weather on this date in year " + mHistoricForecast.getRandomYear() + " was: " + mHistoricForecast.getHistoricDailySummary() + ". The high for the day was " + mHistoricForecast.getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecast.getHistoricDailyMinTemp() + "°F.");
-//                        mHistoricWeatherTextView.setText("I have no access to the model here - HELP...");
 
                     }
 
