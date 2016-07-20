@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        final String cityState = mSelectCityTextView.getText().toString();
 
         if(view == mGetWeatherButton) {
             int city = mCityListSpinner.getSelectedItemPosition();
@@ -107,6 +106,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     double lat = dataSnapshot.child("latitude").getValue(Double.class);
                     double lng = dataSnapshot.child("longitude").getValue(Double.class);
                     Log.d("lat and lng: ", lat + " " + lng);
+
+
+                    //final String cityState = mSelectCityTextView.getText().toString();
+                    Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
+                    intent.putExtra("lat", lat);
+                    intent.putExtra("lng", lng);
+                    startActivity(intent);
                 }
 
                 @Override
@@ -114,9 +120,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 }
             });
-            Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
-            intent.putExtra("cityState", cityState);
-            startActivity(intent);
         }
         if(view == mAboutAppButton) {
             Intent intent = new Intent(MainActivity.this, AboutAppActivity.class);

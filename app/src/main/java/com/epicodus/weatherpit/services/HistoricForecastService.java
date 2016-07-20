@@ -26,7 +26,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HistoricForecastService {
-    public static void findHistoricForecast(String userInputEditText, Callback callback) {
+    public static void findHistoricForecast(Double lat, Double lng, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
 //        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BaseURL).newBuilder();
@@ -35,9 +35,7 @@ public class HistoricForecastService {
 //        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
 //        String url = urlBuilder.build().toString();
 
-
-
-        String url = Constants.BaseURL + Constants.Key + "/" + Constants.Latitude + "," + Constants.Longitude + "," + Constants.Time;
+        String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + Constants.Time;
 
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423,1468556360
 
@@ -58,12 +56,9 @@ public class HistoricForecastService {
             if (response.isSuccessful()) {
                 JSONObject historicForecastServiceJSON = new JSONObject(jsonData);
 
-//                JSONObject hourlySummaryJSON = forecastServiceJSON.getJSONObject("hourly").getJSONObject("summary");
-//                String hourlySummary = hourlySummaryJSON.getString("summary");
-
                 long historicTimeOffset = historicForecastServiceJSON.getLong("offset");
-                double latitude = historicForecastServiceJSON.getDouble("latitude");
-                double longitude = historicForecastServiceJSON.getDouble("longitude");
+                double lat = historicForecastServiceJSON.getDouble("latitude");
+                double lng = historicForecastServiceJSON.getDouble("longitude");
 
                 JSONArray historicDailySummaryJSON = historicForecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < historicDailySummaryJSON.length(); i++) {
@@ -72,10 +67,8 @@ public class HistoricForecastService {
                     String dailyHistoricSummary = summaryHistoricForecastJSON.getString("summary");
                     double minHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMin");
                     double maxHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMax");
-                    Log.v("summary", dailyHistoricSummary);
 
-
-                    HistoricForecast historicForecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, historicTimeOffset);
+                    HistoricForecast historicForecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, historicTimeOffset, lat, lng);
                     historicForecasts.add(historicForecast);
                 }
             }

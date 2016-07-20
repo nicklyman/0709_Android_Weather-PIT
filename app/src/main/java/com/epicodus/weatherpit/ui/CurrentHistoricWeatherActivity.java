@@ -50,7 +50,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
     public ArrayList<HistoricForecast> mHistoricForecasts = new ArrayList<>();
 
-    private HistoricForecast mHistoricForecast;
+      private HistoricForecast mHistoricForecast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,10 +60,16 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mHistoricForecasts);
 
         Intent intent = getIntent();
-        String cityState = intent.getStringExtra("cityState");
-        mLocationTextView.setText(cityState);
+        double lat = intent.getDoubleExtra("lat", 0.0);
+        double lng = intent.getDoubleExtra("lng", 0.0);
+//        String latitude = Double.toString(lat);
+//        String longitude = Double.toString(lng);
+//        String coordinates = latitude + "," + longitude;
 
-        getHistoricDailySummary(cityState);
+        //mLocationTextView.setText(cityState);
+
+//        Log.d("cityState", cityState + "?");
+        getHistoricDailySummary(lat, lng);
 
         mSevenDayForecastButton.setOnClickListener(this);
         mAPILink.setOnClickListener(this);
@@ -83,9 +89,9 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     }
 
 
-    private void getHistoricDailySummary(String cityState) {
+    private void getHistoricDailySummary(Double lat, Double lng) {
         final HistoricForecastService historicForecastService = new HistoricForecastService();
-        historicForecastService.findHistoricForecast(cityState, new Callback() {
+        historicForecastService.findHistoricForecast(lat, lng, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -93,17 +99,18 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-
                 mHistoricForecasts = historicForecastService.processResults(response);
+                Log.v(TAG, mHistoricForecasts.get(0).getHistoricDailySummary());
 
 
 
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
+                        //Log.v(TAG, mHistoricForecast.getHistoricDailySummary());
                         //                mHistoricWeatherTextView.setText("The weather on this date in year " + mHistoricForecast.getRandomYear() + " was: " + mHistoricForecast.getHistoricDailySummary() + ". The high for the day was " + mHistoricForecast.getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecast.getHistoricDailyMinTemp() + "°F.");
-                        mHistoricWeatherTextView.setText("I have no access to the model here - HELP...");
+//                        mHistoricWeatherTextView.setText("I have no access to the model here - HELP...");
+
                     }
 
                 });
