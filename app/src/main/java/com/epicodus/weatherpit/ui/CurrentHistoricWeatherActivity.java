@@ -52,6 +52,9 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
     private HistoricForecast mHistoricForecast;
 
+    public double lat;
+    public double lng;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +75,12 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     @Override
     public void onClick(View view) {
         if(view == mSevenDayForecastButton) {
+            Bundle coordinates = getIntent().getExtras();
+            lat = coordinates.getDouble("lat");
+            lng = coordinates.getDouble("lng");
             Intent intent = new Intent(CurrentHistoricWeatherActivity.this, SevenDayForecastActivity.class);
+            intent.putExtra("lat", lat);
+            intent.putExtra("lng", lng);
             startActivity(intent);
         }
         if (view == mAPILink) {

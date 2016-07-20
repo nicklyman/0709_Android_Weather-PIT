@@ -89,11 +89,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
     //Breaks code when UpArrow clicked
-//    @Override
-//    protected void onDestroy() {
-//        super.onDestroy();
-//        mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
-//    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
+    }
 
 
 
