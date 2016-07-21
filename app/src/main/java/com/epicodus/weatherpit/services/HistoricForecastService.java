@@ -28,7 +28,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class HistoricForecastService {
-    public static void findHistoricForecast(Double lat, Double lng, Callback callback) {
+    public static void findHistoricForecast(Double lat, Double lng, long randomYear, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
 //        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BaseURL).newBuilder();
@@ -51,7 +51,7 @@ public class HistoricForecastService {
 
 
 
-        String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + Constants.Time;
+        String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + randomYear;
 
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423,1468556360
 

@@ -33,6 +33,7 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -65,8 +66,9 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         Intent intent = getIntent();
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lng = intent.getDoubleExtra("lng", 0.0);
+        long randomYear = getRandomYear();
 
-        getHistoricDailySummary(lat, lng);
+        getHistoricDailySummary(lat, lng, randomYear);
 
         mSevenDayForecastButton.setOnClickListener(this);
         mAPILink.setOnClickListener(this);
@@ -91,9 +93,10 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     }
 
 
-    private void getHistoricDailySummary(Double lat, Double lng) {
+    private void getHistoricDailySummary(Double lat, Double lng, long randomYear) {
+//        long randomYear = getRandomYear();
         final HistoricForecastService historicForecastService = new HistoricForecastService();
-        historicForecastService.findHistoricForecast(lat, lng, new Callback() {
+        historicForecastService.findHistoricForecast(lat, lng, randomYear, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 e.printStackTrace();
@@ -102,16 +105,16 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 mHistoricForecasts = historicForecastService.processResults(response);
-                Log.v(TAG, mHistoricForecasts.get(0).getHistoricDailySummary());
+//                Log.v(TAG, mHistoricForecasts.get(0).getHistoricDailySummary());
 
-                mHistoricWeatherTextView.setText("The weather on this date in year XXXX was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + ". The high for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
+
 
 
 
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-
+                        mHistoricWeatherTextView.setText("The weather on this date in year XXXX was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + ". The high for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
                     }
 
                 });
@@ -119,6 +122,15 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
             }
         });
 
+    }
+
+    public long getRandomYear() {
+
+        long currentSeconds = System.currentTimeMillis()/1000L;
+        Log.v("currentSeconds: ", String.valueOf(currentSeconds));
+        long randomYearMath = (long) ((Math.random()*59)+1) * 31536000;
+        long randomYear = currentSeconds - randomYearMath;
+        return randomYear;
     }
 }
 

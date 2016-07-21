@@ -80,9 +80,10 @@ public class HistoricForecast {
         Date currentDate = new Date(System.currentTimeMillis() * 1000L);
         long currentSeconds = currentDate.getTime();
 
-        long timeOffset = mHistoricTimeOffset * (-1);
-        long timeOffsetSeconds = timeOffset * 3600;
-        long unixSeconds = (currentSeconds + timeOffsetSeconds) * 1000L; //trying with system time
+//        long timeOffset = mHistoricTimeOffset * (-1);
+//        long timeOffsetSeconds = timeOffset * 3600;
+//        long unixSeconds = (currentSeconds + timeOffsetSeconds) * 1000L; //trying with system time
+        long unixSeconds = (currentSeconds) * 1000L; //trying with system time
 //        long unixSeconds =  (mHistoricTime + timeOffsetSeconds) * 1000L;
         long randomYearMath = (long) ((Math.random()*59)+1) * 31536000;
         long randomYear = unixSeconds - randomYearMath;
