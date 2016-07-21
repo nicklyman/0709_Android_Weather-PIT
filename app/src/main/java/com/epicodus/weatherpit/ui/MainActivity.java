@@ -111,11 +111,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     Log.d("dataSnapshot: ", dataSnapshot.toString());
+                    String cityName = dataSnapshot.child("cityState").getValue(String.class);
                     double lat = dataSnapshot.child("latitude").getValue(Double.class);
                     double lng = dataSnapshot.child("longitude").getValue(Double.class);
                     Log.d("lat and lng: ", lat + " " + lng);
 
                     Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
+                    intent.putExtra("cityName", cityName);
                     intent.putExtra("lat", lat);
                     intent.putExtra("lng", lng);
                     startActivity(intent);

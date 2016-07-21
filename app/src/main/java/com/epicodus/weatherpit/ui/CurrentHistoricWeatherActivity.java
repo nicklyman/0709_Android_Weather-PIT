@@ -57,6 +57,9 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     public double lat;
     public double lng;
 
+    private String formattedYear;
+    private String cityName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,13 +68,15 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mHistoricForecasts);
 
         Intent intent = getIntent();
+        cityName = intent.getStringExtra("cityName");
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lng = intent.getDoubleExtra("lng", 0.0);
         long randomYear = getRandomYear();
         Log.v("randomYear: ", String.valueOf(randomYear));
         Date date = new Date(randomYear * 1000L);
         SimpleDateFormat year = new SimpleDateFormat("yyyy");
-        String formattedYear = year.format(date);
+        formattedYear = year.format(date);
+
         Log.v("formatted year: ", formattedYear);
 
         getHistoricDailySummary(lat, lng, randomYear);
@@ -101,6 +106,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
     private void getHistoricDailySummary(Double lat, Double lng, long randomYear) {
         final HistoricForecastService historicForecastService = new HistoricForecastService();
+
         historicForecastService.findHistoricForecast(lat, lng, randomYear, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -114,7 +120,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mHistoricWeatherTextView.setText("The weather on this date in year XXXX was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + ". The high for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
+                        mHistoricWeatherTextView.setText("The weather in " + cityName + " around this time of year in " + formattedYear + " was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + " The high temperature for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
                     }
 
                 });
