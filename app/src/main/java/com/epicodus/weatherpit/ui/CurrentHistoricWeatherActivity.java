@@ -32,6 +32,7 @@ import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -67,6 +68,11 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         double lat = intent.getDoubleExtra("lat", 0.0);
         double lng = intent.getDoubleExtra("lng", 0.0);
         long randomYear = getRandomYear();
+        Log.v("randomYear: ", String.valueOf(randomYear));
+        Date date = new Date(randomYear * 1000L);
+        SimpleDateFormat year = new SimpleDateFormat("yyyy");
+        String formattedYear = year.format(date);
+        Log.v("formatted year: ", formattedYear);
 
         getHistoricDailySummary(lat, lng, randomYear);
 
