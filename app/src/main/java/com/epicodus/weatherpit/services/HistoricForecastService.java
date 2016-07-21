@@ -2,6 +2,7 @@ package com.epicodus.weatherpit.services;
 
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 
 import com.epicodus.weatherpit.Constants;
@@ -35,6 +36,20 @@ public class HistoricForecastService {
 //        urlBuilder.addQueryParameter(Constants.Longitude, "-111.0429");
 //        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
 //        String url = urlBuilder.build().toString();
+
+
+
+
+
+
+
+
+
+//        **************** Not Working **********************
+//        Bundle bundle = intent.getExtras();
+//        long randomYear = bundle.getLong("randomYear", 0);
+
+
 
         String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + Constants.Time;
 

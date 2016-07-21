@@ -100,7 +100,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View view) {
 
+
+
         if(view == mGetWeatherButton) {
+
+
+
+//            Try this: http://stackoverflow.com/questions/36992580/how-to-pass-value-from-activity-to-a-service-in-android
+
+
+//            **************** Not Working **********************
+//            HistoricForecast historicForecast = new HistoricForecast();
+//            long randomYear = historicForecast.getRandomYear();
+//
+//            Intent intent = new Intent(MainActivity.this, HistoricForecastService.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putLong("randomYear", randomYear);
+//            intent.putExtras(bundle);
+
+
+
+
+
+
+
             int city = mCityListSpinner.getSelectedItemPosition();
             Query query = FirebaseDatabase.getInstance().getReference("cities").child(city + "");
             Log.d("Query: ", query.toString());
