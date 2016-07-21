@@ -37,20 +37,6 @@ public class HistoricForecastService {
 //        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
 //        String url = urlBuilder.build().toString();
 
-
-
-
-
-
-
-
-
-//        **************** Not Working **********************
-//        Bundle bundle = intent.getExtras();
-//        long randomYear = bundle.getLong("randomYear", 0);
-
-
-
         String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + randomYear;
 
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423,1468556360

@@ -94,7 +94,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
 
 
     private void getHistoricDailySummary(Double lat, Double lng, long randomYear) {
-//        long randomYear = getRandomYear();
         final HistoricForecastService historicForecastService = new HistoricForecastService();
         historicForecastService.findHistoricForecast(lat, lng, randomYear, new Callback() {
             @Override
@@ -105,11 +104,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 mHistoricForecasts = historicForecastService.processResults(response);
-//                Log.v(TAG, mHistoricForecasts.get(0).getHistoricDailySummary());
-
-
-
-
 
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
@@ -118,10 +112,8 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                     }
 
                 });
-
             }
         });
-
     }
 
     public long getRandomYear() {
