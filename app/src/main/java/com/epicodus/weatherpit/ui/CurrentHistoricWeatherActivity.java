@@ -120,7 +120,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mHistoricWeatherTextView.setText("The weather in " + cityName + " around this time of year in " + formattedYear + " was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + " The high temperature for the day was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
+                        mHistoricWeatherTextView.setText("The weather in " + cityName + " around this time of year in " + formattedYear + " was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + " The high temperature was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
                     }
 
                 });
