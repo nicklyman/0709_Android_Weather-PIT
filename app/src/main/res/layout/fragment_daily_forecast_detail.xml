@@ -78,7 +78,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/sunriseSunsetTextView"
+                    android:id="@+id/highTemperatureTextView"
                     android:drawablePadding="4dp"
                     android:textColor="@color/colorTextIcons"
                     android:textAlignment="center"
@@ -92,7 +92,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/lowHighTemperatureTextView"
+                    android:id="@+id/lowTemperatureTextView"
                     android:drawablePadding="4dp"
                     android:textColor="@color/colorTextIcons"
                     android:textAlignment="center"

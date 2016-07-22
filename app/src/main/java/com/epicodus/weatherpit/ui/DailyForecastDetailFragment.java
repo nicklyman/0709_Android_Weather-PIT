@@ -25,9 +25,9 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
     @Bind(R.id.hourlySummaryTextView) TextView mHourlySummary;
     @Bind(R.id.iconTextView) TextView mIcon;
     @Bind(R.id.weatherImageView) ImageView mWeatherIconPlaceholder;
-    @Bind(R.id.lowHighTemperatureTextView) TextView mLowHighTemperature;
+    @Bind(R.id.lowTemperatureTextView) TextView mLowTemperatureTextView;
     @Bind(R.id.forecastLinkTextView) TextView mAPILink;
-    @Bind(R.id.sunriseSunsetTextView) TextView mSunriseSunsetTextView;
+    @Bind(R.id.highTemperatureTextView) TextView mHighTemperatureTextView;
     @Bind(R.id.humidityPrecipitationTextView) TextView mHumidityPrecipitationTextView;
 
     private Forecast mForecast;
@@ -78,8 +78,8 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         } if(mForecast.getDailyIcon().equals("")){
             Picasso.with(view.getContext()).load(R.drawable.weather_clock_icon).into(mWeatherIconPlaceholder);
         }
-        mSunriseSunsetTextView.setText("Sunrise:  " + mForecast.getSunriseTime() + "  -  Sunset: " + mForecast.getSunsetTime());
-        mLowHighTemperature.setText("Low:  " + Double.toString(mForecast.getDailyMinTemp()) + "°F  -  High:  " + Double.toString(mForecast.getDailyMaxTemp()) + "°F");
+        mHighTemperatureTextView.setText("High Temperature:  " + Double.toString(mForecast.getDailyMaxTemp()) + "°F");
+        mLowTemperatureTextView.setText("Low Temperature:  " + Double.toString(mForecast.getDailyMinTemp()) + "°F");
         mHumidityPrecipitationTextView.setText("Humidity: " + mForecast.getHumidityPercent() + "%  -  Preciptation: " + mForecast.getPrecpitationPercent() + "%");
 
 
