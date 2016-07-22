@@ -44,7 +44,6 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class CurrentHistoricWeatherActivity extends AppCompatActivity implements View.OnClickListener {
-    public static final String TAG = CurrentHistoricWeatherActivity.class.getSimpleName();
     @Bind(R.id.forecastLinkTextView) TextView mAPILink;
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;

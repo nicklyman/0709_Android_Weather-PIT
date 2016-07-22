@@ -22,7 +22,6 @@ import java.util.Date;
 
 @Parcel
 public class Forecast {
-    private static final String TAG = Forecast.class.getSimpleName();
     private long mTime;
     private String mSummary;
     private String mIcon;

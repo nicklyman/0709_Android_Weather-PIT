@@ -25,7 +25,6 @@ import java.util.Date;
 
 @Parcel
 public class HistoricForecast {
-    private static final String TAG = HistoricForecast.class.getSimpleName();
     private long mHistoricTime;
     private String mHistoricDailySummary;
     private double mHistoricMinTemp;
