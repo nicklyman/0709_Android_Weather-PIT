@@ -33,9 +33,6 @@ import okhttp3.Response;
 public class SevenDayForecastActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String TAG = SevenDayForecastActivity.class.getSimpleName();
     @Bind(R.id.forecastLinkTextView) TextView mAPILink;
-//    @Bind(R.id.forecastLinkTextView) TextView mForecastLinkTextView;
-//    @Bind(R.id.forecastListView) ListView mForecastListView;
-//    @Bind(R.id.locationTextView) TextView mLocationTextView;
 
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
     private ForecastListAdapter mAdapter;
@@ -49,7 +46,6 @@ public class SevenDayForecastActivity extends AppCompatActivity implements View.
         ButterKnife.bind(this);
 
         ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, mForecasts);
-//        mForecastListView.setAdapter(adapter);
 
         Intent intent = getIntent();
         double lat = intent.getDoubleExtra("lat", 0.0);

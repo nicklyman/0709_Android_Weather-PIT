@@ -27,9 +27,7 @@ import java.util.Date;
 public class HistoricForecast {
     private static final String TAG = HistoricForecast.class.getSimpleName();
     private long mHistoricTime;
-    private String mHistoricDayOfWeek;
     private String mHistoricDailySummary;
-    //    private String mHistoricHourlySummary;
     private double mHistoricMinTemp;
     private double mHistoricMaxTemp;
     private long mHistoricTimeOffset;
@@ -42,7 +40,6 @@ public class HistoricForecast {
     public HistoricForecast(long historicTime, String historicDailySummary, double minHistoricTemp, double maxHistoricTemp, long historicTimeOffset, double latitude, double longitude, String historicDailyIcon) {
         this.mHistoricTime = historicTime;
         this.mHistoricDailySummary = historicDailySummary;
-//    this.mHistoricHourlySummary = historicHourlySummary;
         this.mHistoricMinTemp = minHistoricTemp;
         this.mHistoricMaxTemp = maxHistoricTemp;
         this.mHistoricTimeOffset = historicTimeOffset;
@@ -58,8 +55,6 @@ public class HistoricForecast {
     public String getHistoricDailySummary() {
         return mHistoricDailySummary;
     }
-
-//    public String getHistoricHourlySummary() { return mHistoricHourlySummary; }
 
     public double getHistoricDailyMinTemp() {
         return mHistoricMinTemp;

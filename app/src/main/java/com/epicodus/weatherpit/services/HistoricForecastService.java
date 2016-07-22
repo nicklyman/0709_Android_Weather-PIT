@@ -31,17 +31,8 @@ public class HistoricForecastService {
     public static void findHistoricForecast(Double lat, Double lng, long randomYear, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-//        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BaseURL).newBuilder();
-//        urlBuilder.addQueryParameter(Constants.Latitude, "45.6770");
-//        urlBuilder.addQueryParameter(Constants.Longitude, "-111.0429");
-//        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
-//        String url = urlBuilder.build().toString();
-
         String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng + "," + randomYear;
-
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423,1468556360
-
-        Log.v("url: ", url);
 
         Request request = new Request.Builder()
                 .url(url)

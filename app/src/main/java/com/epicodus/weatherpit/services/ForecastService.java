@@ -28,18 +28,8 @@ public class ForecastService {
     public static void findForecast(Double lat, Double lng, Callback callback) {
         OkHttpClient client = new OkHttpClient.Builder().build();
 
-//        HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.BaseURL).newBuilder();
-//        urlBuilder.addQueryParameter(Constants.Latitude, "45.6770");
-//        urlBuilder.addQueryParameter(Constants.Longitude, "-111.0429");
-//        urlBuilder.addQueryParameter(Constants.Key_Prefix, Constants.Key);
-//        String url = urlBuilder.build().toString();
-
-        
         String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng;
-
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423
-
-        Log.v("url: ", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -62,7 +52,6 @@ public class ForecastService {
 
                 JSONObject weeklySummaryJSON = forecastServiceJSON.getJSONObject("daily");
                 String weeklySummary = weeklySummaryJSON.getString("summary");
-                Log.v("weeklySummary: ", weeklySummary);
 
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {

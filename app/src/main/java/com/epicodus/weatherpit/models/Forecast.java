@@ -24,9 +24,7 @@ import java.util.Date;
 public class Forecast {
     private static final String TAG = Forecast.class.getSimpleName();
     private long mTime;
-    private String mDayOfWeek;
     private String mSummary;
-//    private String mHourlySummary;
     private String mIcon;
     private double mMinTemp;
     private double mMaxTemp;
@@ -44,7 +42,6 @@ public class Forecast {
 public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude, double humidity, double precipitation, long sunrise, long sunset, String weeklyForecast) {
     this.mTime = time;
     this.mSummary = summary;
-//    this.mHourlySummary = hourlySummary;
     this.mIcon = icon;
     this.mMinTemp = minTemp;
     this.mMaxTemp = maxTemp;
@@ -65,8 +62,6 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     public String getDailySummary() {
         return mSummary;
     }
-
-//    public String getHourlySummary() { return mHourlySummary; }
 
     public String getDailyIcon() {
         return mIcon;

@@ -43,7 +43,7 @@
         android:textSize="10sp"
         android:textStyle="bold"
         android:textColor="@color/colorUserInputText"
-        android:text="WeatherPIT on GitHub"
+        android:text="About API"
         android:id="@+id/githubLinkTextView"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

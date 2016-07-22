@@ -29,7 +29,7 @@ public class AboutAppActivity extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         if (view == mGitHubLink) {
             Intent webIntent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("https://github.com/nicklyman/0709_Android_Weather-PIT.git"));
+                    Uri.parse("https://developer.forecast.io/"));
             startActivity(webIntent);
         }
     }

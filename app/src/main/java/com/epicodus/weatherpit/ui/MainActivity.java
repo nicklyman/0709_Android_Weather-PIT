@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot cityCoordinatesSnapshot : dataSnapshot.getChildren()) {
                     String cityStateInfo = cityCoordinatesSnapshot.getValue().toString();
-                    Log.d("cities: ", cityStateInfo);
                 }
             }
 
@@ -106,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             int city = mCityListSpinner.getSelectedItemPosition();
             Query query = FirebaseDatabase.getInstance().getReference("cities").child(city + "");
-            Log.d("Query: ", query.toString());
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
@@ -114,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     String cityName = dataSnapshot.child("cityState").getValue(String.class);
                     double lat = dataSnapshot.child("latitude").getValue(Double.class);
                     double lng = dataSnapshot.child("longitude").getValue(Double.class);
-                    Log.d("lat and lng: ", lat + " " + lng);
 
                     Intent intent = new Intent(MainActivity.this, CurrentHistoricWeatherActivity.class);
                     intent.putExtra("cityName", cityName);
@@ -125,7 +122,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
                 }
             });
         }

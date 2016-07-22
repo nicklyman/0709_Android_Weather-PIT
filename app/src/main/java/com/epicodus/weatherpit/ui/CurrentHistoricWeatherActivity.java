@@ -80,8 +80,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
         SimpleDateFormat year = new SimpleDateFormat("yyyy");
         formattedYear = year.format(date);
 
-        Log.v("formatted year: ", formattedYear);
-
         getHistoricDailySummary(lat, lng, randomYear);
 
         mSevenDayForecastButton.setOnClickListener(this);
@@ -161,7 +159,6 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     public long getRandomYear() {
 
         long currentSeconds = System.currentTimeMillis()/1000L;
-        Log.v("currentSeconds: ", String.valueOf(currentSeconds));
         long randomYearMath = (long) ((Math.random()*59)+1) * 31536000;
         long randomYear = currentSeconds - randomYearMath;
         return randomYear;
