@@ -20,36 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.CurrentHistoricWeatherActivity"
-            android:parentActivityName=".ui.MainActivity">
-            <metadata
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity">
-            </metadata>
+            android:name=".ui.CurrentHistoricWeatherActivity">
         </activity>
         <activity
-            android:name=".ui.SevenDayForecastActivity"
-            android:parentActivityName=".ui.CurrentHistoricWeatherActivity">
-            <metadata
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.CurrentHistoricWeatherActivity">
-            </metadata>
+            android:name=".ui.SevenDayForecastActivity">
         </activity>
         <activity
-            android:name=".ui.AboutAppActivity"
-            android:parentActivityName=".ui.MainActivity">
-            <metadata
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.MainActivity">
-            </metadata>
+            android:name=".ui.AboutAppActivity">
         </activity>
         <activity
-            android:name=".ui.DailyForecastDetailActivity"
-            android:parentActivityName=".ui.SevenDayForecastActivity">
-            <metadata
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".ui.SevenDayForecastActivity">
-            </metadata>
+            android:name=".ui.DailyForecastDetailActivity">
         </activity>
     </application>
 
