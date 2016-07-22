@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     @Bind(R.id.historicWeatherTextView) TextView mHistoricWeatherTextView;
     @Bind(R.id.randomYearTextView) TextView mRandomYearTextView;
     @Bind(R.id.historicTemperaturesTextView) TextView mHistoricTemperatureTextView;
+    @Bind(R.id.historicWeatherImageView) ImageView mHistoricWeatherImageView;
 
     public ArrayList<HistoricForecast> mHistoricForecasts = new ArrayList<>();
 
@@ -122,7 +124,32 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                     @Override
                     public void run() {
                         mRandomYearTextView.setText(cityName + ": " + formattedYear);
-                        mHistoricWeatherTextView.setText("The weather around this time of year in was: " + mHistoricForecasts.get(0).getHistoricDailySummary());
+
+                        if (mHistoricForecasts.get(0).getHistoricDailyIcon().equals("clear-day")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.clear_day).into(mHistoricWeatherImageView);
+                        } if (mHistoricForecasts.get(0).getHistoricDailyIcon().equals("clear-night")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.clear_night).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("rain")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.rain).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("snow")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.snow).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("sleet")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.sleet).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("wind")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.wind).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("fog")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.fog).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("cloudy")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.cloudy).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("partly-cloudy-day")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.partly_cloudy_day).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("partly-cloudy-night")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.partly_cloudy_night).into(mHistoricWeatherImageView);
+                        } if(mHistoricForecasts.get(0).getHistoricDailyIcon().equals("")){
+                            Picasso.with(CurrentHistoricWeatherActivity.this).load(R.drawable.weather_clock_icon).into(mHistoricWeatherImageView);
+                        }
+
+                        mHistoricWeatherTextView.setText("Around this time of year in " + formattedYear + ", the forecast called for:\r\n" + mHistoricForecasts.get(0).getHistoricDailySummary());
                         mHistoricTemperatureTextView.setText("The high temperature was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F.\r\n The low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
                     }
 

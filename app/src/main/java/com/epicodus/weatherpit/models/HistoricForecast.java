@@ -35,10 +35,11 @@ public class HistoricForecast {
     private long mHistoricTimeOffset;
     private double mLatitude;
     private double mLongitude;
+    private String mHistoricDailyIcon;
 
     public HistoricForecast() {}
 
-    public HistoricForecast(long historicTime, String historicDailySummary, double minHistoricTemp, double maxHistoricTemp, long historicTimeOffset, double latitude, double longitude) {
+    public HistoricForecast(long historicTime, String historicDailySummary, double minHistoricTemp, double maxHistoricTemp, long historicTimeOffset, double latitude, double longitude, String historicDailyIcon) {
         this.mHistoricTime = historicTime;
         this.mHistoricDailySummary = historicDailySummary;
 //    this.mHistoricHourlySummary = historicHourlySummary;
@@ -47,6 +48,7 @@ public class HistoricForecast {
         this.mHistoricTimeOffset = historicTimeOffset;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
+        this.mHistoricDailyIcon = historicDailyIcon;
     }
 
     public long getHistoricUnixTime() {
@@ -72,6 +74,8 @@ public class HistoricForecast {
     public double getLatitude() { return mLatitude; }
 
     public double getLongitude() { return mLongitude; }
+
+    public String getHistoricDailyIcon() { return mHistoricDailyIcon; }
 
 }
 

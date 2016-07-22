@@ -69,8 +69,9 @@ public class HistoricForecastService {
                     String dailyHistoricSummary = summaryHistoricForecastJSON.getString("summary");
                     double minHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMin");
                     double maxHistoricTemp = summaryHistoricForecastJSON.getDouble("temperatureMax");
+                    String historicDailyIcon = summaryHistoricForecastJSON.getString("icon");
 
-                    HistoricForecast historicForecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, historicTimeOffset, lat, lng);
+                    HistoricForecast historicForecast = new HistoricForecast(historicTime, dailyHistoricSummary, minHistoricTemp, maxHistoricTemp, historicTimeOffset, lat, lng, historicDailyIcon);
                     historicForecasts.add(historicForecast);
                 }
             }
