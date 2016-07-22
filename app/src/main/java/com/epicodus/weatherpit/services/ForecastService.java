@@ -60,6 +60,10 @@ public class ForecastService {
                 double lat = forecastServiceJSON.getDouble("latitude");
                 double lng = forecastServiceJSON.getDouble("longitude");
 
+                JSONObject weeklySummaryJSON = forecastServiceJSON.getJSONObject("daily");
+                String weeklySummary = weeklySummaryJSON.getString("summary");
+                Log.v("weeklySummary: ", weeklySummary);
+
                 JSONArray dailySummaryJSON = forecastServiceJSON.getJSONObject("daily").getJSONArray("data");
                 for (int i = 0; i < dailySummaryJSON.length(); i++) {
                     JSONObject summaryForecastJSON = dailySummaryJSON.getJSONObject(i);
@@ -73,7 +77,7 @@ public class ForecastService {
                     long sunrise = summaryForecastJSON.getLong("sunriseTime");
                     long sunset = summaryForecastJSON.getLong("sunsetTime");
 
-                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng, humidity, precipitation, sunrise, sunset);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng, humidity, precipitation, sunrise, sunset, weeklySummary);
                     forecasts.add(forecast);
                 }
             }

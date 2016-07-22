@@ -54,7 +54,7 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         ButterKnife.bind(this, view);
 
 
-        mHourlySummary.setText(mForecast.getDailySummary());
+        mHourlySummary.setText(mForecast.getWeeklySummary());
         if (mForecast.getDailyIcon().equals("clear-day")){
             Picasso.with(view.getContext()).load(R.drawable.clear_day).into(mWeatherIconPlaceholder);
         } if (mForecast.getDailyIcon().equals("clear-night")){
@@ -78,9 +78,9 @@ public class DailyForecastDetailFragment extends Fragment implements View.OnClic
         } if(mForecast.getDailyIcon().equals("")){
             Picasso.with(view.getContext()).load(R.drawable.weather_clock_icon).into(mWeatherIconPlaceholder);
         }
-        mSunriseSunsetTextView.setText("Sunrise:  " + mForecast.getSunriseTime() + " - Sunset: " + mForecast.getSunsetTime());
-        mLowHighTemperature.setText("Low:  " + Double.toString(mForecast.getDailyMinTemp()) + "°F - High:  " + Double.toString(mForecast.getDailyMaxTemp()) + "°F");
-        mHumidityPrecipitationTextView.setText("Humidity: " + mForecast.getHumidityPercent() + "% - Preciptation: " + mForecast.getPrecpitationPercent() + "%");
+        mSunriseSunsetTextView.setText("Sunrise:  " + mForecast.getSunriseTime() + "  -  Sunset: " + mForecast.getSunsetTime());
+        mLowHighTemperature.setText("Low:  " + Double.toString(mForecast.getDailyMinTemp()) + "°F  -  High:  " + Double.toString(mForecast.getDailyMaxTemp()) + "°F");
+        mHumidityPrecipitationTextView.setText("Humidity: " + mForecast.getHumidityPercent() + "%  -  Preciptation: " + mForecast.getPrecpitationPercent() + "%");
 
 
         mAPILink.setOnClickListener(this);

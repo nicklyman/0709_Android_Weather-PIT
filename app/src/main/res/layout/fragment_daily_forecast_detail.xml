@@ -14,15 +14,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@android:color/white"
-            android:paddingTop="20dp"
+            android:paddingTop="10dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:paddingBottom="20dp">
+            android:paddingBottom="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Summary: "
+                android:text="Week Ahead: "
                 android:id="@+id/summaryTextView"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
@@ -66,8 +66,6 @@
                     android:textColor="@color/colorTextIcons"
                     android:textSize="15sp"
                     android:textStyle="bold"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="0dp"
                     android:gravity="center"/>
 
                 <ImageView

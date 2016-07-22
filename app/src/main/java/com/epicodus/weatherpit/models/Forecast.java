@@ -37,10 +37,11 @@ public class Forecast {
     private double mPrecipitation;
     private long mSunrise;
     private long mSunset;
+    private String mWeeklyForecast;
 
     public Forecast() {}
 
-public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude, double humidity, double precipitation, long sunrise, long sunset) {
+public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude, double humidity, double precipitation, long sunrise, long sunset, String weeklyForecast) {
     this.mTime = time;
     this.mSummary = summary;
 //    this.mHourlySummary = hourlySummary;
@@ -54,6 +55,7 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     this.mPrecipitation = precipitation;
     this.mSunrise = sunrise;
     this.mSunset = sunset;
+    this.mWeeklyForecast = weeklyForecast;
     }
 
     public long getUnixTime() {
@@ -91,6 +93,8 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     public long getSunrise() { return mSunrise; }
 
     public long getSunset() { return mSunset; }
+
+    public String getWeeklySummary() { return mWeeklyForecast; }
 
 
     public String getDayOfWeek() {
