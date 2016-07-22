@@ -48,7 +48,8 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
     @Bind(R.id.locationTextView) TextView mLocationTextView;
     @Bind(R.id.sevenDayForecastButton) Button mSevenDayForecastButton;
     @Bind(R.id.historicWeatherTextView) TextView mHistoricWeatherTextView;
-    @Bind(R.id.currentWeatherTextView) TextView mCurrentWeatherTextView;
+    @Bind(R.id.randomYearTextView) TextView mRandomYearTextView;
+    @Bind(R.id.historicTemperaturesTextView) TextView mHistoricTemperatureTextView;
 
     public ArrayList<HistoricForecast> mHistoricForecasts = new ArrayList<>();
 
@@ -120,7 +121,9 @@ public class CurrentHistoricWeatherActivity extends AppCompatActivity implements
                 CurrentHistoricWeatherActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        mHistoricWeatherTextView.setText("The weather in " + cityName + " around this time of year in " + formattedYear + " was: " + mHistoricForecasts.get(0).getHistoricDailySummary() + " The high temperature was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F and the low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
+                        mRandomYearTextView.setText(cityName + ": " + formattedYear);
+                        mHistoricWeatherTextView.setText("The weather around this time of year in was: " + mHistoricForecasts.get(0).getHistoricDailySummary());
+                        mHistoricTemperatureTextView.setText("The high temperature was " + mHistoricForecasts.get(0).getHistoricDailyMaxTemp() + "°F.\r\n The low temperature was " + mHistoricForecasts.get(0).getHistoricDailyMinTemp() + "°F.");
                     }
 
                 });

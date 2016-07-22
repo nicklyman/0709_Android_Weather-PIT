@@ -9,5 +9,5 @@
     <color name="colorTextIcons">#212121</color>
     <color name="colorDivider">#B6B6B6</color>
     <color name="colorMatchImage">#EE7C09</color>
-    <color name="colorUserInputText">#FFFFFF</color>
+    <color name="colorUserInputText">#ffffff</color>
 </resources>
