@@ -33,10 +33,14 @@ public class Forecast {
     private long mTimeOffset;
     private double mLatitude;
     private double mLongitude;
+    private double mHumidity;
+    private double mPrecipitation;
+    private long mSunrise;
+    private long mSunset;
 
     public Forecast() {}
 
-public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude) {
+public Forecast(long time, String summary, String icon, double minTemp, double maxTemp, long timeOffset, double latitude, double longitude, double humidity, double precipitation, long sunrise, long sunset) {
     this.mTime = time;
     this.mSummary = summary;
 //    this.mHourlySummary = hourlySummary;
@@ -46,6 +50,10 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
     this.mTimeOffset = timeOffset;
     this.mLatitude = latitude;
     this.mLongitude = longitude;
+    this.mHumidity = humidity;
+    this.mPrecipitation = precipitation;
+    this.mSunrise = sunrise;
+    this.mSunset = sunset;
     }
 
     public long getUnixTime() {
@@ -76,6 +84,14 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
 
     public double getLongitude() { return mLongitude; }
 
+    public double getHumidity() { return mHumidity; }
+
+    public double getPrecipitation() { return mPrecipitation; }
+
+    public long getSunrise() { return mSunrise; }
+
+    public long getSunset() { return mSunset; }
+
 
     public String getDayOfWeek() {
         long timeOffset = mTimeOffset * (-1);
@@ -84,6 +100,38 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
         DateFormat day = new SimpleDateFormat("EEEE");
         String dayOfWeek = day.format(new Date(unixSeconds));
         return dayOfWeek;
+    }
+
+    public String getSunriseTime() {
+        long timeOffset = mTimeOffset * (-1);
+        long timeOffsetSeconds = timeOffset * 3600;
+        long unixSeconds =  (mSunrise + timeOffsetSeconds) * 1000L;
+        DateFormat sunriseTime = new SimpleDateFormat("h:mm a");
+        String timeOfSunrise = sunriseTime.format(new Date(unixSeconds));
+        return timeOfSunrise;
+    }
+
+    public String getSunsetTime() {
+        long timeOffset = mTimeOffset * (-1);
+        long timeOffsetSeconds = timeOffset * 3600;
+        long unixSeconds = (mSunset + timeOffsetSeconds) * 1000L;
+        DateFormat sunsetTime = new SimpleDateFormat("h:mm a");
+        String timeOfSunset = sunsetTime.format(new Date(unixSeconds));
+        return timeOfSunset;
+    }
+
+    public long getHumidityPercent() {
+        double humidity = mHumidity;
+        double humidityDouble = humidity * 100;
+        long humidityPercent = (long) humidityDouble;
+        return humidityPercent;
+    }
+
+    public long getPrecpitationPercent() {
+        double precipitation = mPrecipitation;
+        double precipitationDouble = precipitation * 100;
+        long precipitationPercent = (long) precipitationDouble;
+        return precipitationPercent;
     }
 }
 

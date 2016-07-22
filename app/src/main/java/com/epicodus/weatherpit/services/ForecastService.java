@@ -68,8 +68,12 @@ public class ForecastService {
                     String icon = summaryForecastJSON.getString("icon");
                     double minTemp = summaryForecastJSON.getDouble("temperatureMin");
                     double maxTemp = summaryForecastJSON.getDouble("temperatureMax");
+                    double humidity = summaryForecastJSON.getDouble("humidity");
+                    double precipitation = summaryForecastJSON.getDouble("precipProbability");
+                    long sunrise = summaryForecastJSON.getLong("sunriseTime");
+                    long sunset = summaryForecastJSON.getLong("sunsetTime");
 
-                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng);
+                    Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng, humidity, precipitation, sunrise, sunset);
                     forecasts.add(forecast);
                 }
             }
