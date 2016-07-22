@@ -108,7 +108,6 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
 //        long unixSeconds = mSunrise * 1000L;
         DateFormat sunriseTime = new SimpleDateFormat("h:mm a");
         String timeOfSunrise = sunriseTime.format(new Date(unixSeconds));
-        Log.v("sunriseTime", timeOfSunrise);
         return timeOfSunrise;
     }
 
@@ -119,7 +118,6 @@ public Forecast(long time, String summary, String icon, double minTemp, double m
 //        long unixSeconds = mSunset * 1000L;
         DateFormat sunsetTime = new SimpleDateFormat("h:mm a");
         String timeOfSunset = sunsetTime.format(new Date(unixSeconds));
-        Log.v("sunsetTime", timeOfSunset);
         return timeOfSunset;
     }
 

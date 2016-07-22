@@ -30,7 +30,6 @@ public class ForecastService {
 
         String url = Constants.BaseURL + Constants.Key + "/" + lat + "," + lng;
         // Working example: https://api.forecast.io/forecast/4d67d511c3eed2b7be581fc31fe32cf9/37.8267,-122.423
-        Log.v("url: ", url);
 
         Request request = new Request.Builder()
                 .url(url)
@@ -65,9 +64,7 @@ public class ForecastService {
                     double humidity = summaryForecastJSON.getDouble("humidity");
                     double precipitation = summaryForecastJSON.getDouble("precipProbability");
                     long sunrise = summaryForecastJSON.getLong("sunriseTime");
-                    Log.v("sunrise", String.valueOf(sunrise));
                     long sunset = summaryForecastJSON.getLong("sunsetTime");
-                    Log.v("sunset", String.valueOf(sunset));
 
                     Forecast forecast = new Forecast(time, summary, icon, minTemp, maxTemp, timeOffset, lat, lng, humidity, precipitation, sunrise, sunset, weeklySummary);
                     forecasts.add(forecast);

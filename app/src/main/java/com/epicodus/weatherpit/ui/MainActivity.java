@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Bind(R.id.titleTextView) TextView mTitleTextView;
     @Bind(R.id.cityListSpinner) Spinner mCityListSpinner;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -79,27 +78,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGetWeatherButton.setOnClickListener(this);
         mAboutAppButton.setOnClickListener(this);
 
-        //Spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.cityList, android.R.layout.simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mCityListSpinner.setAdapter(adapter);
     }
 
-
-
-    //Breaks code when UpArrow clicked
     @Override
     protected void onDestroy() {
         super.onDestroy();
         mCityCoordinatesReference.removeEventListener(mCityCoordinatesReferenceListener);
     }
 
-
-
     @Override
     public void onClick(View view) {
-
-
 
         if(view == mGetWeatherButton) {
 
@@ -108,7 +99,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             query.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    Log.d("dataSnapshot: ", dataSnapshot.toString());
                     String cityName = dataSnapshot.child("cityState").getValue(String.class);
                     double lat = dataSnapshot.child("latitude").getValue(Double.class);
                     double lng = dataSnapshot.child("longitude").getValue(Double.class);
