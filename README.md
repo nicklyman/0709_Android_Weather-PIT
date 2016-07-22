@@ -1,12 +1,12 @@
 # **Weather P.I.T.**
 
-#### An Android mobile application that uses the Dark Sky API to return weather data to the user. July 22, 2016
+#### An Android mobile application that uses the Dark Sky API to return current and historic weather forecast data to the user. July 22, 2016
 
 #### By **Nick Lyman**
 
 ## Description
 
-This mobile application allows the user to select a city and state and view the historic forecast, followed by the current forecast. The year for the historic forecast is randomly generated so that each time the application is refreshed, the user will see different data to for the city they have chosen. The user will be able to see the seven day forecast and, by selecting a date from the weekly view, detailed daily information for the city they chose.
+Weather P.I.T. (Point In Time) is a mobile application allows the user to select a city and state and view the historic forecast, followed by the current forecast. The year for the historic forecast is randomly generated so that each time the application is refreshed, the user will see different data to for the city they have chosen. The user will be able to see the seven day forecast and, by selecting a date from the weekly view, detailed daily information for the city they chose.
 
 ## Prerequisites
 
